@@ -1,13 +1,48 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@font-face {
+  font-family: one;
+  src: url("samsungone.ttf");
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* {
+  box-sizing: border-box;
+  font-family: one, sans-serif;
+}
+
+body {
+  margin: 0;
+}
+
+.centered {
+  margin: 3rem auto;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.focused {
+  font-size: 3rem;
+  font-weight: bold;
+  color: white;
+}
+
+.btn {
+  border: none;
+  text-decoration: none;
+  font-size: 1rem;
+  background-color: #434343;
+  color: white;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.btn:focus-visible {
+  outline: none;
+}
+
+.btn:hover,
+.btn:active {
+  background-color: #535353;
 }

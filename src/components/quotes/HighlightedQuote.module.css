@@ -1,0 +1,47 @@
+@import url("https://fonts.googleapis.com/css2?family=Cabin:ital,wght@1,600&display=swap");
+
+.quote {
+  text-align: center;
+  margin-top: 50%;
+  transform: translateY(-50%);
+}
+
+.quote p {
+  font-size: 2rem;
+  font-family: "Cabin", sans-serif;
+  font-weight: bold;
+}
+
+.quote figcaption {
+  font-family: "Cabin", sans-serif;
+  font-size: 1.25rem;
+  text-align: right;
+}
+
+.text::before {
+  transform: scaleX(0);
+  transform-origin: bottom right;
+}
+
+.text:hover::before {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.text::before {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  inset: 0 0 0 0;
+  background: #fff3a2;
+  z-index: -1;
+  transition: transform 0.4s ease-in-out;
+}
+
+.text {
+  position: relative;
+}
