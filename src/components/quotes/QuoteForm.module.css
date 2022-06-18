@@ -22,6 +22,18 @@
   margin-bottom: 1rem;
 }
 
+.invalid input,
+.invalid textarea {
+  border-color: #ff8383 !important;
+  background-color: #fff3f3;
+}
+
+.invalid input:focus,
+.invalid textarea:focus {
+  border-color: #ffd298 !important;
+  background-color: #fff8ee;
+}
+
 .control input,
 .control textarea {
   font: inherit;

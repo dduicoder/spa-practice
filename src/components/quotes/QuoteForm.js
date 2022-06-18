@@ -8,6 +8,8 @@ import classes from "./QuoteForm.module.css";
 
 const QuoteForm = (props) => {
   const [isEntering, setIsEntering] = useState(false);
+  const [authorValid, setAuthorValid] = useState(true);
+  const [textValid, setTextValid] = useState(true);
 
   const authorInputRef = useRef();
   const textInputRef = useRef();
@@ -18,7 +20,20 @@ const QuoteForm = (props) => {
     const enteredAuthor = authorInputRef.current.value;
     const enteredText = textInputRef.current.value;
 
-    // optional: Could validate here
+    if (enteredAuthor.trim().length === 0) {
+      setAuthorValid(false);
+      if (enteredText.trim().length === 0) {
+        setTextValid(false);
+      }
+      return;
+    }
+    if (enteredText.trim().length === 0) {
+      setTextValid(false);
+      if (enteredAuthor.trim().length === 0) {
+        setAuthorValid(false);
+      }
+      return;
+    }
 
     props.onAddQuote({ author: enteredAuthor, text: enteredText });
   }
@@ -29,6 +44,22 @@ const QuoteForm = (props) => {
 
   const btnClickHandler = () => {
     setIsEntering(false);
+  };
+
+  const authorBlurHandler = (event) => {
+    if (event.target.value.trim().length === 0) {
+      setAuthorValid(false);
+    } else {
+      setAuthorValid(true);
+    }
+  };
+
+  const textBlurHandler = (event) => {
+    if (event.target.value.trim().length === 0) {
+      setTextValid(false);
+    } else {
+      setTextValid(true);
+    }
   };
 
   return (
@@ -50,13 +81,31 @@ const QuoteForm = (props) => {
               <LoadingSpinner />
             </div>
           )}
-          <div className={classes.control}>
+          <div
+            className={`${classes.control} ${
+              authorValid ? undefined : classes.invalid
+            }`}
+          >
             <label htmlFor="author">Author</label>
-            <input type="text" id="author" ref={authorInputRef} />
+            <input
+              type="text"
+              id="author"
+              ref={authorInputRef}
+              onBlur={authorBlurHandler}
+            />
           </div>
-          <div className={classes.control}>
+          <div
+            className={`${classes.control} ${
+              textValid ? undefined : classes.invalid
+            }`}
+          >
             <label htmlFor="text">Text</label>
-            <textarea id="text" rows="5" ref={textInputRef}></textarea>
+            <textarea
+              id="text"
+              rows="5"
+              ref={textInputRef}
+              onBlur={textBlurHandler}
+            ></textarea>
           </div>
           <div className={classes.actions}>
             <button onClick={btnClickHandler} className="btn">

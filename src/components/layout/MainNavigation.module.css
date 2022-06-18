@@ -23,12 +23,15 @@
 .header a {
   text-decoration: none;
   margin-left: 1.5rem;
-  font-size: 1.1rem;
+  padding: 5px 0;
   color: #d8d8d8;
+  transition: all 0.2s ease-in-out;
+  border-bottom: 1px solid #434343;
 }
 
 .header a:hover,
 .header a:active,
 .header a.active {
   color: white;
+  border-color: white;
 }

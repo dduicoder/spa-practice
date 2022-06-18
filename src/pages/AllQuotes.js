@@ -1,35 +1,40 @@
-import QuoteList from "../components/quotes/QuoteList";
+import { useEffect } from "react";
 
-const DUMMY_QUOTES = [
-  {
-    id: "q1",
-    author: "Dalai Lama",
-    text: "The purpose of our lives is to be happy.",
-  },
-  {
-    id: "q2",
-    author: "John Lennon",
-    text: "Life is what happens when you’re busy making other plans.",
-  },
-  {
-    id: "q3",
-    author: "Stephen King",
-    text: "Get busy living or get busy dying.",
-  },
-  {
-    id: "q4",
-    author: "Mae West",
-    text: "You only live once, but if you do it right, once is enough.",
-  },
-  {
-    id: "q5",
-    author: "Thomas A. Edison",
-    text: "Many of life’s failures are people who did not realize how close they were to success when they gave up.",
-  },
-];
+import QuoteList from "../components/quotes/QuoteList";
+import NoQuotesFound from "../components/quotes/NoQuotesFound";
+import LoadingSpinner from "../components/UI/LoadingSpinner";
+import useHttp from "../hooks/use-http";
+import { getAllQuotes } from "../lib/api";
 
 const AllQuotes = () => {
-  return <QuoteList quotes={DUMMY_QUOTES} />;
+  const {
+    sendRequest,
+    status,
+    data: loadedQuotes,
+    error,
+  } = useHttp(getAllQuotes, true);
+
+  useEffect(() => {
+    sendRequest();
+  }, [sendRequest]);
+
+  if (status === "pending") {
+    return (
+      <div className="centered">
+        <LoadingSpinner />
+      </div>
+    );
+  }
+
+  if (error) {
+    return <p className="centered focused">{error}</p>;
+  }
+
+  if (status === "completed" && (!loadedQuotes || loadedQuotes.length === 0)) {
+    return <NoQuotesFound />;
+  }
+
+  return <QuoteList quotes={loadedQuotes} />;
 };
 
 export default AllQuotes;

@@ -1,7 +1,5 @@
 .item {
-  margin: 1rem 0;
-  color: #4a5555;
-  font-size: 1.25rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 2px solid teal;;
+  margin: 1rem auto;
+  width: min(100%, 30rem);
+  border-bottom: 1px solid #a9a9a9;
 }
