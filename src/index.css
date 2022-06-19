@@ -1,15 +1,25 @@
-@font-face {
-  font-family: one;
-  src: url("samsungone.ttf");
-}
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap");
 
 * {
   box-sizing: border-box;
-  font-family: one, sans-serif;
+  font-family: "Noto Sans", sans-serif;
 }
 
 body {
   margin: 0;
+}
+
+.backdrop {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.25);
+}
+
+.backdrop::-webkit-scrollbar {
+  display: none;
 }
 
 .centered {

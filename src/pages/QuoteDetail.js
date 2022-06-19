@@ -1,5 +1,12 @@
 import { Fragment, useEffect } from "react";
-import { Route, Link, useParams, useRouteMatch } from "react-router-dom";
+import { createPortal } from "react-dom";
+import {
+  Route,
+  Link,
+  useParams,
+  useRouteMatch,
+  useHistory,
+} from "react-router-dom";
 import useHttp from "../hooks/use-http";
 import { getSingleQuote } from "../lib/api";
 
@@ -10,6 +17,7 @@ import LoadingSpinner from "../components/UI/LoadingSpinner";
 const QuoteDetail = () => {
   const match = useRouteMatch();
   const params = useParams();
+  const history = useHistory();
 
   const { quoteId } = params;
 
@@ -44,18 +52,26 @@ const QuoteDetail = () => {
     );
   }
 
+  const backdropClickHandler = () => {
+    history.push(match.url);
+  };
+
   return (
     <Fragment>
       <HighlightedQuote text={loadedQuotes.text} author={loadedQuotes.author} />
-      <Route path={`${match.path}`} exact>
-        <div className="centered">
-          <Link className="btn" to={`${match.url}/comments`}>
-            Load Comments
-          </Link>
-        </div>
-      </Route>
+      <div className="centered">
+        <Link className="btn" to={`${match.url}/comments`}>
+          Load Comments
+        </Link>
+      </div>
       <Route path={`${match.path}/comments`}>
-        <Comments />
+        {createPortal(
+          <Fragment>
+            <div className="backdrop" onClick={backdropClickHandler}></div>
+            <Comments />
+          </Fragment>,
+          document.getElementById("overlays")
+        )}
       </Route>
     </Fragment>
   );

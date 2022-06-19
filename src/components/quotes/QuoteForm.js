@@ -20,18 +20,10 @@ const QuoteForm = (props) => {
     const enteredAuthor = authorInputRef.current.value;
     const enteredText = textInputRef.current.value;
 
-    if (enteredAuthor.trim().length === 0) {
-      setAuthorValid(false);
-      if (enteredText.trim().length === 0) {
-        setTextValid(false);
-      }
-      return;
-    }
-    if (enteredText.trim().length === 0) {
-      setTextValid(false);
-      if (enteredAuthor.trim().length === 0) {
-        setAuthorValid(false);
-      }
+    setAuthorValid(enteredAuthor.trim().length !== 0);
+    setTextValid(enteredText.trim().length !== 0);
+
+    if (enteredAuthor.trim().length === 0 || enteredText.trim().length === 0) {
       return;
     }
 

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useCallback } from "react";
 import { useHistory } from "react-router-dom";
 
 import QuoteForm from "../components/quotes/QuoteForm";
@@ -15,11 +15,12 @@ const NewQuotes = () => {
     }
   }, [status, history]);
 
-  const addQuotehandler = (quoteData) => {
-    sendRequest(quoteData);
-
-    history.push("/quotes");
-  };
+  const addQuotehandler = useCallback(
+    (quoteData) => {
+      sendRequest(quoteData);
+    },
+    [sendRequest]
+  );
 
   return (
     <QuoteForm isLoading={status === "pending"} onAddQuote={addQuotehandler} />
