@@ -52,10 +52,6 @@ const QuoteDetail = () => {
     );
   }
 
-  const backdropClickHandler = () => {
-    history.push(match.url);
-  };
-
   return (
     <Fragment>
       <HighlightedQuote text={loadedQuotes.text} author={loadedQuotes.author} />
@@ -67,7 +63,12 @@ const QuoteDetail = () => {
       <Route path={`${match.path}/comments`}>
         {createPortal(
           <Fragment>
-            <div className="backdrop" onClick={backdropClickHandler}></div>
+            <div
+              className="backdrop"
+              onClick={() => {
+                history.push(match.url);
+              }}
+            ></div>
             <Comments />
           </Fragment>,
           document.getElementById("overlays")

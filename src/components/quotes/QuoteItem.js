@@ -3,7 +3,7 @@ import classes from "./QuoteItem.module.css";
 
 const QuoteItem = (props) => {
   return (
-    <li className={classes.item}>
+    <li className={`card ${classes.item}`}>
       <figure>
         <blockquote>
           <p>{props.text}</p>

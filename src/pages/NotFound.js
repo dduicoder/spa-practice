@@ -1,6 +1,6 @@
 const NotFound = () => {
   return (
-    <div className="centered" style={{ fontSize: "2rem" }}>
+    <div className="centered" style={{ fontSize: "2rem", fontWeight: "bold" }}>
       Page Not Found
     </div>
   );

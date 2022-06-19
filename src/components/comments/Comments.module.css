@@ -5,13 +5,11 @@
   left: 50%;
   transform: translateX(-50%);
   width: min(90%, 40rem);
-  padding: 2rem;
-  border-radius: 2rem;
+  padding: 3rem;
+  border-radius: 1.5rem;
   max-height: 70vh;
   z-index: 30;
-  background-color: white;
   overflow-y: scroll;
-  box-shadow: 0 0 10rem rgba(0, 0, 0, 0.1);
 }
 
 .comments::-webkit-scrollbar {

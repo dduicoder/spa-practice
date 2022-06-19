@@ -21,7 +21,6 @@
 .control label {
   font-weight: bold;
   display: block;
-  margin-bottom: 0.5rem;
 }
 
 .control textarea {
@@ -31,7 +30,7 @@
   border: 1px solid #dedede;
   display: block;
   width: min(100%, 30rem);
-  margin: 0 auto;
+  margin: 1rem auto;
   transition: all 0.15s ease-in-out;
 }
 

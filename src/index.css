@@ -36,6 +36,13 @@ body {
   color: white;
 }
 
+.card {
+  padding: 1.5rem;
+  border-radius: 1rem;
+  background-color: white;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+}
+
 .btn {
   border: none;
   text-decoration: none;
@@ -54,5 +61,5 @@ body {
 
 .btn:hover,
 .btn:active {
-  background-color: #535353;
+  background-color: #595959;
 }

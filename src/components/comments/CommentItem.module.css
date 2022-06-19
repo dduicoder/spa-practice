@@ -1,5 +1,10 @@
 .item {
   margin: 1rem auto;
   width: min(100%, 30rem);
-  border-bottom: 1px solid #a9a9a9;
+  border-bottom: 1px solid #c6c6c6;
+  transition: all 0.15s ease-in-out;
+}
+
+.item:hover {
+  border-color: #343434;
 }

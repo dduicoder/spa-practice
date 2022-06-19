@@ -2,7 +2,6 @@ import { Fragment } from "react";
 import { useRef, useState } from "react";
 import { Prompt } from "react-router-dom";
 
-import Card from "../UI/Card";
 import LoadingSpinner from "../UI/LoadingSpinner";
 import classes from "./QuoteForm.module.css";
 
@@ -62,50 +61,48 @@ const QuoteForm = (props) => {
           "Are you sure you want to leave? All your entered data will be lost."
         }
       />
-      <Card>
-        <form
-          onFocus={formFocusHandler}
-          className={classes.form}
-          onSubmit={submitFormHandler}
+      <form
+        onFocus={formFocusHandler}
+        className={`card ${classes.form}`}
+        onSubmit={submitFormHandler}
+      >
+        {props.isLoading && (
+          <div className={classes.loading}>
+            <LoadingSpinner />
+          </div>
+        )}
+        <div
+          className={`${classes.control} ${
+            authorValid ? undefined : classes.invalid
+          }`}
         >
-          {props.isLoading && (
-            <div className={classes.loading}>
-              <LoadingSpinner />
-            </div>
-          )}
-          <div
-            className={`${classes.control} ${
-              authorValid ? undefined : classes.invalid
-            }`}
-          >
-            <label htmlFor="author">Author</label>
-            <input
-              type="text"
-              id="author"
-              ref={authorInputRef}
-              onBlur={authorBlurHandler}
-            />
-          </div>
-          <div
-            className={`${classes.control} ${
-              textValid ? undefined : classes.invalid
-            }`}
-          >
-            <label htmlFor="text">Text</label>
-            <textarea
-              id="text"
-              rows="5"
-              ref={textInputRef}
-              onBlur={textBlurHandler}
-            ></textarea>
-          </div>
-          <div className={classes.actions}>
-            <button onClick={btnClickHandler} className="btn">
-              Add Quote
-            </button>
-          </div>
-        </form>
-      </Card>
+          <label htmlFor="author">Author</label>
+          <input
+            type="text"
+            id="author"
+            ref={authorInputRef}
+            onBlur={authorBlurHandler}
+          />
+        </div>
+        <div
+          className={`${classes.control} ${
+            textValid ? undefined : classes.invalid
+          }`}
+        >
+          <label htmlFor="text">Text</label>
+          <textarea
+            id="text"
+            rows="5"
+            ref={textInputRef}
+            onBlur={textBlurHandler}
+          ></textarea>
+        </div>
+        <div className={classes.actions}>
+          <button onClick={btnClickHandler} className="btn">
+            Add Quote
+          </button>
+        </div>
+      </form>
     </Fragment>
   );
 };
