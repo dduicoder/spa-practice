@@ -5,12 +5,12 @@
   left: 50%;
   transform: translateX(-50%);
   width: min(90%, 40rem);
-  padding: 3rem;
+  padding: 1.5rem;
   border-radius: 1.5rem;
   max-height: 70vh;
   z-index: 30;
   overflow-y: scroll;
-  animation: pop-down 0.2s ease-in-out;
+  animation: pop-down 0.25s ease-in-out;
 }
 
 .comments::-webkit-scrollbar {
