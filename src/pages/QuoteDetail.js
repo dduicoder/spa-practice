@@ -1,12 +1,6 @@
 import { Fragment, useEffect } from "react";
 import { createPortal } from "react-dom";
-import {
-  Route,
-  Link,
-  useParams,
-  useRouteMatch,
-  useHistory,
-} from "react-router-dom";
+import { Route, Routes, Link, useParams, useNavigate } from "react-router-dom";
 import useHttp from "../hooks/use-http";
 import { getSingleQuote } from "../lib/api";
 
@@ -15,9 +9,8 @@ import HighlightedQuote from "../components/quotes/HighlightedQuote";
 import LoadingSpinner from "../components/UI/LoadingSpinner";
 
 const QuoteDetail = () => {
-  const match = useRouteMatch();
   const params = useParams();
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const { quoteId } = params;
 
@@ -56,24 +49,27 @@ const QuoteDetail = () => {
     <Fragment>
       <HighlightedQuote text={loadedQuotes.text} author={loadedQuotes.author} />
       <div className="centered">
-        <Link className="btn" to={`${match.url}/comments`}>
-          Load Comments
+        <Link className="btn" to={"comments"}>
+          Comments
         </Link>
       </div>
-      <Route path={`${match.path}/comments`}>
-        {createPortal(
-          <Fragment>
-            <div
-              className="backdrop"
-              onClick={() => {
-                history.push(match.url);
-              }}
-            ></div>
-            <Comments />
-          </Fragment>,
-          document.getElementById("overlays")
-        )}
-      </Route>
+      <Routes>
+        <Route
+          path={"/comments"}
+          element={createPortal(
+            <Fragment>
+              <div
+                className="backdrop"
+                onClick={() => {
+                  navigate("");
+                }}
+              ></div>
+              <Comments />
+            </Fragment>,
+            document.getElementById("overlays")
+          )}
+        />
+      </Routes>
     </Fragment>
   );
 };
