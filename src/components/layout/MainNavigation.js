@@ -18,7 +18,7 @@ const MainNavigation = () => {
           to="/new-quote"
           className={({ isActive }) => (isActive ? classes.active : "")}
         >
-          Add A Quote
+          Add Quote
         </NavLink>
       </div>
     </header>

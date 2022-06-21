@@ -6,6 +6,8 @@
   justify-content: space-between;
   align-items: center;
   background-color: #434343;
+  position: fixed;
+  top: 0;
 }
 
 .logo {
@@ -13,18 +15,11 @@
   color: white;
 }
 
-.header ul {
-  list-style: none;
-  display: flex;
-  margin: 0;
-  padding: 0;
-}
-
 .header a {
   text-decoration: none;
-  margin-left: 1.5rem;
+  margin-left: 1rem;
   padding: 5px 0;
-  color: #cfcfcf;
+  color: #cdcdcd;
   transition: all 0.2s ease-in-out;
   border-bottom: 1px solid #434343;
 }

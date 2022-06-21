@@ -45,13 +45,6 @@ const QuoteForm = (props) => {
 
   return (
     <Fragment>
-      {/* <div
-        className={`card ${classes.prompt} ${
-          isEntering ? classes.pop : classes.hide
-        }`}
-      >
-        Are you sure you want to leave? All your entered data will be lost.
-      </div> */}
       <form className={`card ${classes.form}`} onSubmit={submitFormHandler}>
         {props.isLoading && (
           <div className={classes.loading}>
