@@ -11,7 +11,7 @@
   height: 64px;
   margin: 8px;
   border-radius: 50%;
-  border: 6px solid #343434;
+  border: 5px solid #343434;
   border-color: #343434 transparent #343434 transparent;
   animation: spinner 1.2s linear infinite;
 }

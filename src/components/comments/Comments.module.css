@@ -1,13 +1,13 @@
 .comments {
   text-align: center;
   position: fixed;
-  top: 15vh;
+  top: 10vh;
   left: 50%;
   transform: translateX(-50%);
   width: min(90%, 40rem);
   padding: 1.5rem;
   border-radius: 1.5rem;
-  max-height: 70vh;
+  max-height: 80vh;
   z-index: 30;
   overflow-y: scroll;
   animation: pop-down 0.25s ease-in-out;
@@ -20,10 +20,10 @@
 @keyframes pop-down {
   from {
     opacity: 0;
-    top: 10vh;
+    top: 5vh;
   }
   to {
     opacity: 1;
-    top: 15vh;
+    top: 10vh;
   }
 }

@@ -5,7 +5,7 @@ import QuoteForm from "../components/quotes/QuoteForm";
 import useHttp from "../hooks/use-http";
 import { addQuote } from "../lib/api";
 
-const NewQuotes = () => {
+const NewQuote = () => {
   const { sendRequest, status } = useHttp(addQuote);
   const navigate = useNavigate();
 
@@ -27,4 +27,4 @@ const NewQuotes = () => {
   );
 };
 
-export default NewQuotes;
+export default NewQuote;
