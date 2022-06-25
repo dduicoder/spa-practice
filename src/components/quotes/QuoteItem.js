@@ -6,7 +6,9 @@ const QuoteItem = (props) => {
     <li className={`card ${classes.item}`}>
       <figure>
         <blockquote>
-          <p>{props.text}</p>
+          {props.text.length > 150
+            ? props.text.substr(0, 150) + "..."
+            : props.text}
         </blockquote>
         <figcaption>{props.author}</figcaption>
       </figure>

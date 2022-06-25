@@ -13,16 +13,11 @@
 .item blockquote {
   margin: 0;
   text-align: left;
-  font-size: 1.25rem;
-  color: #212929;
-}
-
-.item p {
-  margin: 0;
+  font-size: 1.125rem;
   margin-bottom: 0.5rem;
 }
 
 .item figcaption {
   font-style: italic;
-  color: #566d6d;
+  color: #757575;
 }

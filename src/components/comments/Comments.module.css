@@ -11,6 +11,7 @@
   z-index: 30;
   overflow-y: scroll;
   animation: pop-down 0.25s ease-in-out;
+  background-color: white;
 }
 
 .comments::-webkit-scrollbar {

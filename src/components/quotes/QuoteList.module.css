@@ -11,4 +11,13 @@
   padding-bottom: 1rem;
   border-bottom: 3px solid #434343;
   margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.select select {
+  border-radius: 5px;
+  padding: 5px;
+  outline: none;
 }

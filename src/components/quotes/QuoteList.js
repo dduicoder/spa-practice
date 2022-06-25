@@ -1,7 +1,8 @@
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 
 import QuoteItem from "./QuoteItem";
+import Pagination from "../layout/Pagination";
 import classes from "./QuoteList.module.css";
 
 const sortQuotes = (quotes, ascending) => {
@@ -19,13 +20,39 @@ const QuoteList = (props) => {
   const location = useLocation();
 
   const sortAsc = new URLSearchParams(location.search).get("sort") === "asc";
+  const page = Number(new URLSearchParams(location.search).get("page"));
+  const limit = Number(new URLSearchParams(location.search).get("limit"));
 
   const sortedQuotes = sortQuotes(props.quotes, sortAsc);
+  const offset = (page - 1) * limit;
+
+  useEffect(() => {
+    if (location.search === "") {
+      navigate({
+        pathname: location.pathname,
+        search: "page=1&limit=5&sort=asc",
+      });
+    }
+  }, [location, navigate]);
 
   const changeSortHandler = () => {
     navigate({
       pathname: location.pathname,
-      search: `?sort=${sortAsc ? "desc" : "asc"}`,
+      search: `page=${page}&limit=${limit}&sort=${sortAsc ? "desc" : "asc"}`,
+    });
+  };
+
+  const setPage = (newPage) => {
+    navigate({
+      pathname: location.pathname,
+      search: `page=${newPage}&limit=${limit}&sort=${sortAsc ? "asc" : "desc"}`,
+    });
+  };
+
+  const setLimit = (newLimit) => {
+    navigate({
+      pathname: location.pathname,
+      search: `page=${page}&limit=${newLimit}&sort=${sortAsc ? "asc" : "desc"}`,
     });
   };
 
@@ -35,9 +62,22 @@ const QuoteList = (props) => {
         <button onClick={changeSortHandler} className="btn">
           Sort {sortAsc ? "Decending" : "Ascending"}
         </button>
+        <label className={classes.select}>
+          Quotes per page : &nbsp;
+          <select
+            type="number"
+            value={limit}
+            onChange={({ target: { value } }) => setLimit(Number(value))}
+          >
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="25">25</option>
+            <option value="50">50</option>
+          </select>
+        </label>
       </div>
       <ul className={classes.list}>
-        {sortedQuotes.map((quote) => (
+        {sortedQuotes.slice(offset, offset + limit).map((quote) => (
           <QuoteItem
             key={quote.id}
             id={quote.id}
@@ -46,6 +86,12 @@ const QuoteList = (props) => {
           />
         ))}
       </ul>
+      <Pagination
+        total={sortedQuotes.length}
+        limit={limit}
+        page={page}
+        setPage={setPage}
+      />
     </Fragment>
   );
 };

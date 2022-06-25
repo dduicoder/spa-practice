@@ -34,10 +34,9 @@ const NewCommentForm = (props) => {
   };
 
   const textBlurHandler = (event) => {
-    if (event.target.value.trim().length === 0) {
-      return;
+    if (event.target.value.trim().length !== 0) {
+      setTextValid(true);
     }
-    setTextValid(true);
   };
 
   return (

@@ -28,17 +28,13 @@ const QuoteForm = (props) => {
   };
 
   const authorBlurHandler = (event) => {
-    if (event.target.value.trim().length === 0) {
-      setAuthorValid(false);
-    } else {
+    if (event.target.value.trim().length !== 0) {
       setAuthorValid(true);
     }
   };
 
   const textBlurHandler = (event) => {
-    if (event.target.value.trim().length === 0) {
-      setTextValid(false);
-    } else {
+    if (event.target.value.trim().length !== 0) {
       setTextValid(true);
     }
   };
@@ -52,9 +48,7 @@ const QuoteForm = (props) => {
           </div>
         )}
         <div
-          className={`${classes.control} ${
-            authorValid ? undefined : classes.invalid
-          }`}
+          className={`${classes.control} ${authorValid ? "" : classes.invalid}`}
         >
           <label htmlFor="author">Author</label>
           <input
@@ -65,9 +59,7 @@ const QuoteForm = (props) => {
           />
         </div>
         <div
-          className={`${classes.control} ${
-            textValid ? undefined : classes.invalid
-          }`}
+          className={`${classes.control} ${textValid ? "" : classes.invalid}`}
         >
           <label htmlFor="text">Text</label>
           <textarea

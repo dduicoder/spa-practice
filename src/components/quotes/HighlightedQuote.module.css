@@ -2,13 +2,14 @@
 
 .quote {
   text-align: center;
-  margin-top: 12rem;
+  margin-top: 8rem;
 }
 
 .quote p {
   font-family: "Cabin", sans-serif;
   font-size: 2rem;
   font-weight: bold;
+  letter-spacing: 0.5px;
 }
 
 .quote ::selection {
@@ -28,10 +29,11 @@
 .copy img {
   cursor: pointer;
   transition: all 0.2s ease-in-out;
+  width: 2rem;
 }
 
 .copy img:active {
-  transform: scale(0.9);
+  transform: scale(0.8);
 }
 
 .click::before {

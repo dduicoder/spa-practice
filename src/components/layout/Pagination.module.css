@@ -1,0 +1,22 @@
+.footer {
+  gap: 1rem;
+}
+
+.footer button {
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  background-color: white;
+}
+
+.footer .current {
+  color: black;
+}
+
+.incurrent {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.footer button:disabled {
+  display: none;
+}

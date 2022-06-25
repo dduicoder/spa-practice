@@ -11,15 +11,9 @@ body {
 
 .backdrop {
   position: fixed;
-  left: 0;
-  top: 0;
-  width: 100vw;
-  height: 100vh;
+  inset: 0;
+  z-index: 2;
   background-color: rgba(0, 0, 0, 0.25);
-}
-
-.backdrop::-webkit-scrollbar {
-  display: none;
 }
 
 .centered {
@@ -39,8 +33,7 @@ body {
 .card {
   padding: 1.5rem;
   border-radius: 1rem;
-  background-color: white;
-  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.05);
 }
 
 .btn {
