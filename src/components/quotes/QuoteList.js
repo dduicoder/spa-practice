@@ -1,4 +1,4 @@
-import { Fragment, useEffect } from "react";
+import { Fragment, useEffect, useState, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 
 import QuoteItem from "./QuoteItem";
@@ -16,8 +16,27 @@ const sortQuotes = (quotes, ascending) => {
 };
 
 const QuoteList = (props) => {
+  const [showSelect, setShowSelect] = useState(false);
+
   const navigate = useNavigate();
   const location = useLocation();
+
+  const useOutsideAlerter = (ref) => {
+    useEffect(() => {
+      const handleClickOutside = (event) => {
+        if (ref.current && !ref.current.contains(event.target)) {
+          setShowSelect(false);
+        }
+      };
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }, [ref]);
+  };
+
+  const wrapperRef = useRef();
+  useOutsideAlerter(wrapperRef);
 
   const sortAsc = new URLSearchParams(location.search).get("sort") === "asc";
   const page = Number(new URLSearchParams(location.search).get("page"));
@@ -30,7 +49,7 @@ const QuoteList = (props) => {
     if (location.search === "") {
       navigate({
         pathname: location.pathname,
-        search: "page=1&limit=5&sort=asc",
+        search: "page=1&limit=10&sort=asc",
       });
     }
   }, [location, navigate]);
@@ -56,25 +75,62 @@ const QuoteList = (props) => {
     });
   };
 
+  if (props.quotes.length < offset || page === 0 || limit === 0) {
+    return (
+      <div
+        className="centered"
+        style={{
+          fontSize: "2rem",
+          fontWeight: "bold",
+          flexDirection: "column",
+          gap: "3rem",
+        }}
+      >
+        Wrong Page
+        <button
+          className="btn"
+          onClick={() => {
+            navigate({
+              pathname: location.pathname,
+              search: "page=1&limit=10&sort=asc",
+            });
+          }}
+        >
+          Page 1
+        </button>
+      </div>
+    );
+  }
+
+  const limits = [5, 10, 25, 50];
+
   return (
     <Fragment>
       <div className={classes.sorting}>
         <button onClick={changeSortHandler} className="btn">
           Sort {sortAsc ? "Decending" : "Ascending"}
         </button>
-        <label className={classes.select}>
-          Quotes per page : &nbsp;
-          <select
-            type="number"
-            value={limit}
-            onChange={({ target: { value } }) => setLimit(Number(value))}
-          >
-            <option value="5">5</option>
-            <option value="10">10</option>
-            <option value="25">25</option>
-            <option value="50">50</option>
-          </select>
-        </label>
+        <div ref={wrapperRef} className={classes.select}>
+          <button className="btn" onClick={() => setShowSelect(!showSelect)}>
+            Quotes per page : {limit}
+          </button>
+          {showSelect && (
+            <ul>
+              {limits.map((val) => (
+                <li
+                  key={val}
+                  value={val}
+                  onClick={() => {
+                    setLimit(val);
+                    setShowSelect(false);
+                  }}
+                >
+                  {val}
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
       </div>
       <ul className={classes.list}>
         {sortedQuotes.slice(offset, offset + limit).map((quote) => (

@@ -9,9 +9,7 @@ const Pagination = ({ total, limit, page, setPage }) => {
 
   return (
     <footer className={`centered ${classes.footer}`}>
-      <button onClick={() => setPage(page - 1)} disabled={page === 1}>
-        &lt;
-      </button>
+      {page !== 1 && <button onClick={() => setPage(page - 1)}>&lt;</button>}
       {Array(numPages)
         .fill()
         .map((_, i) => (
@@ -23,9 +21,9 @@ const Pagination = ({ total, limit, page, setPage }) => {
             {i + 1}
           </button>
         ))}
-      <button onClick={() => setPage(page + 1)} disabled={page === numPages}>
-        &gt;
-      </button>
+      {page !== numPages && (
+        <button onClick={() => setPage(page + 1)}>&gt;</button>
+      )}
     </footer>
   );
 };

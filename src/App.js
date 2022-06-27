@@ -9,7 +9,6 @@ const QuoteDetail = React.lazy(() => import("./pages/QuoteDetail"));
 const NotFound = React.lazy(() => import("./pages/NotFound"));
 const AllQuotes = React.lazy(() => import("./pages/AllQuotes"));
 
-// 댓글 pagination 기능
 // 로그인 기능
 
 function App() {

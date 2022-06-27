@@ -7,7 +7,7 @@ const MainNavigation = () => {
   const [show, setShow] = useState(true);
   const [lastScroll, setLastScroll] = useState(0);
 
-  const scrollFunction = () => {
+  window.onscroll = () => {
     if (document.documentElement.scrollTop > lastScroll) {
       setShow(false);
     } else {
@@ -15,8 +15,6 @@ const MainNavigation = () => {
     }
     setLastScroll(document.documentElement.scrollTop);
   };
-
-  window.onscroll = scrollFunction;
 
   return (
     <header className={classes.header} style={{ top: show ? "0" : "-4rem" }}>

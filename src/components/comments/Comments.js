@@ -20,10 +20,6 @@ const Comments = () => {
     sendRequest(quoteId);
   }, [sendRequest, quoteId]);
 
-  const startAddCommentHandler = () => {
-    setIsAddingComment(true);
-  };
-
   const addCommentHandler = useCallback(() => {
     sendRequest(quoteId);
     setIsAddingComment(false);
@@ -55,7 +51,7 @@ const Comments = () => {
       <h2>User Comments</h2>
       {comments}
       {!isAddingComment && (
-        <button className="btn" onClick={startAddCommentHandler}>
+        <button className="btn" onClick={() => setIsAddingComment(true)}>
           Add Comment
         </button>
       )}

@@ -19,7 +19,7 @@ const HighlightedQuote = (props) => {
       <p className={classes.text}>{props.text}</p>
       <p>"</p>
       <figcaption>- {props.author} -</figcaption>
-      <div className={`${classes.copy} ${click ? classes.click : undefined}`}>
+      <div className={`${classes.copy} ${click ? classes.click : ""}`}>
         <img src={copy} alt="copy" onClick={copyHandler} />
       </div>
     </figure>

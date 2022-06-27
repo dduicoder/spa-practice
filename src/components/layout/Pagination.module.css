@@ -16,7 +16,3 @@
 .incurrent {
   color: rgba(0, 0, 0, 0.5);
 }
-
-.footer button:disabled {
-  display: none;
-}

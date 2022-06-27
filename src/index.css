@@ -1,8 +1,12 @@
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap");
 
 * {
   box-sizing: border-box;
-  font-family: "Noto Sans", sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+* ::selection {
+  background-color: #a7d6ff;
 }
 
 body {
@@ -38,18 +42,15 @@ body {
 
 .btn {
   border: none;
+  outline: none;
   text-decoration: none;
   font-size: 1rem;
   background-color: #434343;
   color: white;
   border-radius: 0.5rem;
-  padding: 0.75rem 1.25rem;
+  padding: 0.7rem 1rem;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
-}
-
-.btn:focus-visible {
-  outline: none;
 }
 
 .btn:hover,
