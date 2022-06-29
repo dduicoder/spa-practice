@@ -2,7 +2,7 @@
 
 .quote {
   text-align: center;
-  margin-top: 8rem;
+  margin: 15vh 0 0 0;
 }
 
 .quote p {
@@ -22,44 +22,18 @@
   font-size: 1.25rem;
 }
 
-.copy {
-  margin-top: 1rem;
-  position: relative;
-}
-
-.copy img {
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-  width: 2rem;
-}
-
-.copy img:active {
-  transform: scale(0.8);
-}
-
-.click::before {
-  content: "copied";
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  animation: fade-in-out 0.5s ease-in-out forwards;
-}
-
-@keyframes fade-in-out {
-  0% {
-    opacity: 0;
+@media (max-width: 600px) {
+  .quote p {
+    font-size: 1.5rem;
   }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
+  .quote figcaption {
+    font-size: 1rem;
   }
 }
 
 .text {
   position: relative;
+  width: 100%;
 }
 
 .text::before {
@@ -80,4 +54,40 @@
   background: #ffde66;
   z-index: -1;
   transition: transform 0.5s ease-in-out;
+}
+
+.copy {
+  position: relative;
+  margin: 2.5rem 0 3rem 0;
+}
+
+.copy img {
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  width: 2rem;
+}
+
+.copy img:active {
+  transform: scale(0.8);
+}
+
+.click::before {
+  content: "copied";
+  position: absolute;
+  top: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: fade-in-out 0.5s ease-in-out forwards;
+}
+
+@keyframes fade-in-out {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }

@@ -1,6 +1,7 @@
 import classes from "./HighlightedQuote.module.css";
 import copy from "./copy.png";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const HighlightedQuote = (props) => {
   const [click, setClick] = useState(false);
@@ -22,6 +23,9 @@ const HighlightedQuote = (props) => {
       <div className={`${classes.copy} ${click ? classes.click : ""}`}>
         <img src={copy} alt="copy" onClick={copyHandler} />
       </div>
+      <Link className="btn" to="comments">
+        Comments
+      </Link>
     </figure>
   );
 };

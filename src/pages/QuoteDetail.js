@@ -1,6 +1,6 @@
 import { Fragment, useEffect } from "react";
 import { createPortal } from "react-dom";
-import { Route, Routes, Link, useParams, useNavigate } from "react-router-dom";
+import { Route, Routes, useParams, useNavigate } from "react-router-dom";
 import useHttp from "../hooks/use-http";
 import { getSingleQuote } from "../lib/api";
 
@@ -48,11 +48,6 @@ const QuoteDetail = () => {
   return (
     <Fragment>
       <HighlightedQuote text={loadedQuotes.text} author={loadedQuotes.author} />
-      <div className="centered">
-        <Link className="btn" to={"comments"}>
-          Comments
-        </Link>
-      </div>
       <Routes>
         <Route
           path={"/comments"}

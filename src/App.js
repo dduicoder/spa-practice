@@ -11,7 +11,7 @@ const AllQuotes = React.lazy(() => import("./pages/AllQuotes"));
 
 // 로그인 기능
 
-function App() {
+const App = () => {
   return (
     <Layout>
       <Suspense
@@ -22,7 +22,7 @@ function App() {
         }
       >
         <Routes>
-          <Route index element={<Navigate to="/quotes" />} exact />
+          <Route index element={<Navigate to="/quotes" />} />
           <Route path="/quotes" element={<AllQuotes />} />
           <Route path="/quotes/:quoteId/*" element={<QuoteDetail />} />
           <Route path="/new-quote" element={<NewQuote />} />
@@ -31,6 +31,6 @@ function App() {
       </Suspense>
     </Layout>
   );
-}
+};
 
 export default App;
