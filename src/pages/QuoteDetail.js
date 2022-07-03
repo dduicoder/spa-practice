@@ -1,9 +1,9 @@
 import { Fragment, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { Route, Routes, useParams, useNavigate } from "react-router-dom";
+
 import useHttp from "../hooks/use-http";
 import { getSingleQuote } from "../lib/api";
-
 import Comments from "../components/comments/Comments";
 import HighlightedQuote from "../components/quotes/HighlightedQuote";
 import LoadingSpinner from "../components/UI/LoadingSpinner";
@@ -17,7 +17,7 @@ const QuoteDetail = () => {
   const {
     sendRequest,
     status,
-    data: loadedQuotes,
+    data: loadedQuote,
     error,
   } = useHttp(getSingleQuote, true);
 
@@ -34,20 +34,16 @@ const QuoteDetail = () => {
   }
 
   if (error) {
-    return <p className="centered focused">{error}</p>;
+    return <p className="centered">{error}</p>;
   }
 
-  if (!loadedQuotes.text) {
-    return (
-      <p className="centered" style={{ fontSize: "2rem", fontWeight: "bold" }}>
-        Quote empty
-      </p>
-    );
+  if (!loadedQuote.text) {
+    return <p className="centered">Quote Empty</p>;
   }
 
   return (
     <Fragment>
-      <HighlightedQuote text={loadedQuotes.text} author={loadedQuotes.author} />
+      <HighlightedQuote quote={loadedQuote} />
       <Routes>
         <Route
           path={"/comments"}
@@ -59,7 +55,7 @@ const QuoteDetail = () => {
                   navigate("");
                 }}
               ></div>
-              <Comments />
+              <Comments comments={loadedQuote.comments} />
             </Fragment>,
             document.getElementById("overlays")
           )}

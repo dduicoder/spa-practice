@@ -66,9 +66,21 @@ export async function addComment(requestData) {
       },
     }
   );
+
+  const commentsResponce = await fetch(
+    `${FIREBASE_DOMAIN}/quotes/${requestData.quoteId}/comments.json`,
+    {
+      method: "PUT",
+      body: JSON.stringify(requestData.comments + 1),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+
   const data = await response.json();
 
-  if (!response.ok) {
+  if (!response.ok || !commentsResponce.ok) {
     throw new Error(data.message || "Could not add comment.");
   }
 
@@ -96,4 +108,44 @@ export async function getAllComments(quoteId) {
   }
 
   return transformedComments;
+}
+
+export async function addView(requestData) {
+  const response = await fetch(
+    `${FIREBASE_DOMAIN}/quotes/${requestData.quoteId}/view.json`,
+    {
+      method: "PUT",
+      body: JSON.stringify(requestData.view + 1),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(data.message || "Could not add view.");
+  }
+
+  return null;
+}
+
+export async function setLike(requestData) {
+  const response = await fetch(
+    `${FIREBASE_DOMAIN}/quotes/${requestData.quoteId}/like.json`,
+    {
+      method: "PUT",
+      body: JSON.stringify(requestData.like),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(data.message || "Could not set like.");
+  }
+
+  return null;
 }

@@ -13,11 +13,28 @@
 .item blockquote {
   margin: 0;
   text-align: left;
-  font-size: 1.125rem;
-  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+  line-height: 1.5rem;
 }
 
 .item figcaption {
   font-style: italic;
   color: #757575;
+  margin-top: 5px;
+}
+
+.item span {
+  font-size: 0.75rem;
+}
+
+@media (max-width: 600px) {
+  .item blockquote {
+    font-size: 1rem;
+  }
+  .item figcaption {
+    font-size: 0.75rem;
+  }
+  .item span {
+    font-size: 0.5rem;
+  }
 }

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 import QuoteList from "../components/quotes/QuoteList";
-import NoQuotesFound from "../components/quotes/NoQuotesFound";
 import LoadingSpinner from "../components/UI/LoadingSpinner";
 import useHttp from "../hooks/use-http";
 import { getAllQuotes } from "../lib/api";
@@ -27,11 +27,18 @@ const AllQuotes = () => {
   }
 
   if (error) {
-    return <p className="centered focused">{error}</p>;
+    return <p className="centered">{error}</p>;
   }
 
   if (status === "completed" && (!loadedQuotes || loadedQuotes.length === 0)) {
-    return <NoQuotesFound />;
+    return (
+      <div className="centered" style={{ flexDirection: "column" }}>
+        <p>No Quotes Found</p>
+        <Link className="btn" to="/new-quote">
+          Add a Quote
+        </Link>
+      </div>
+    );
   }
 
   return <QuoteList quotes={loadedQuotes} />;

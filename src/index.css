@@ -28,12 +28,6 @@ body {
   align-items: center;
 }
 
-.focused {
-  font-size: 3rem;
-  font-weight: bold;
-  color: white;
-}
-
 .card {
   padding: 1.5rem;
   border-radius: 1rem;
@@ -54,5 +48,11 @@ body {
 
 .btn:hover,
 .btn:active {
-  background-color: #555555;
+  background-color: #5d5d5d;
+}
+
+@media (max-width: 600px) {
+  .btn {
+    font-size: 0.75rem;
+  }
 }

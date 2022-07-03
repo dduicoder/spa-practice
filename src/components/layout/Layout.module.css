@@ -2,3 +2,9 @@
   margin: 3rem auto;
   width: min(90%, 45rem);
 }
+
+@media (max-width: 600px) {
+  .main {
+    margin: 2rem auto;
+  }
+}

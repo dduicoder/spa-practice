@@ -23,6 +23,13 @@ const CommentsList = (props) => {
     }
   }, [location, navigate]);
 
+  const setNewPage = (newPage) => {
+    navigate({
+      pathname: location.pathname,
+      search: `page=${newPage}`,
+    });
+  };
+
   return (
     <Fragment>
       <ul className={classes.comments}>
@@ -34,12 +41,7 @@ const CommentsList = (props) => {
         total={props.comments.length}
         limit={limit}
         page={page}
-        setPage={(newPage) =>
-          navigate({
-            pathname: location.pathname,
-            search: `page=${newPage}`,
-          })
-        }
+        setPage={setNewPage}
       />
     </Fragment>
   );

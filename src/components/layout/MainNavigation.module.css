@@ -32,3 +32,15 @@
   color: white;
   border-color: white;
 }
+
+@media (max-width: 600px) {
+  .header a {
+    font-size: 0.75rem;
+  }
+  .logo {
+    font-size: 1rem;
+  }
+  .header {
+    height: 3rem;
+  }
+}

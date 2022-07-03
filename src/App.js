@@ -10,6 +10,9 @@ const NotFound = React.lazy(() => import("./pages/NotFound"));
 const AllQuotes = React.lazy(() => import("./pages/AllQuotes"));
 
 // 로그인 기능
+// 조회수 기능
+// 좋아요 기능
+// 좋아요 / 조회수 정렬 기능
 
 const App = () => {
   return (

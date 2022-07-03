@@ -1,0 +1,28 @@
+.select {
+  position: relative;
+}
+
+.select ul {
+  background-color: white;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  position: absolute;
+  left: 0;
+  list-style: none;
+  animation: fade-in 0.2s ease-in-out;
+}
+
+.select ul li {
+  cursor: pointer;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

@@ -1,14 +1,14 @@
 import { useState, useEffect, useCallback } from "react";
 import { useParams } from "react-router-dom";
 
-import classes from "./Comments.module.css";
 import NewCommentForm from "./NewCommentForm";
-import useHttp from "../../hooks/use-http";
-import { getAllComments } from "../../lib/api";
 import LoadingSpinner from "../UI/LoadingSpinner";
 import CommentsList from "./CommentsList";
+import useHttp from "../../hooks/use-http";
+import { getAllComments } from "../../lib/api";
+import classes from "./Comments.module.css";
 
-const Comments = () => {
+const Comments = (props) => {
   const [isAddingComment, setIsAddingComment] = useState(false);
   const params = useParams();
 
@@ -43,20 +43,23 @@ const Comments = () => {
     status === "completed" &&
     (!loadedComments || loadedComments.length === 0)
   ) {
-    comments = <p className="centered">- No comments -</p>;
+    comments = <p className="centered">- No Comments -</p>;
   }
 
   return (
     <section className={`card ${classes.comments}`}>
-      <h2>User Comments</h2>
+      <h2>User Comments ({props.comments})</h2>
       {comments}
-      {!isAddingComment && (
+      {isAddingComment ? (
+        <NewCommentForm
+          quoteId={quoteId}
+          onAddedComment={addCommentHandler}
+          comments={loadedComments.length}
+        />
+      ) : (
         <button className="btn" onClick={() => setIsAddingComment(true)}>
           Add Comment
         </button>
-      )}
-      {isAddingComment && (
-        <NewCommentForm quoteId={quoteId} onAddedComment={addCommentHandler} />
       )}
     </section>
   );

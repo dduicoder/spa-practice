@@ -7,3 +7,9 @@
 .comments + footer {
   margin: 2rem auto;
 }
+
+@media (max-width: 600px) {
+  .comments + footer {
+    margin: 1.5rem auto;
+  }
+}

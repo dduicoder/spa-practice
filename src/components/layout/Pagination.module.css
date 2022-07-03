@@ -5,12 +5,8 @@
 .footer button {
   border: none;
   font-size: 1rem;
-  cursor: pointer;
   background-color: white;
-}
-
-.footer .current {
-  color: black;
+  cursor: pointer;
 }
 
 .incurrent {

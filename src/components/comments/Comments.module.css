@@ -10,7 +10,7 @@
   max-height: 80vh;
   z-index: 30;
   overflow-y: scroll;
-  animation: pop-down 0.25s ease-in-out;
+  animation: pop-down 0.2s ease-in-out;
   background-color: white;
 }
 
@@ -26,5 +26,12 @@
   to {
     opacity: 1;
     top: 10vh;
+  }
+}
+
+@media (max-width: 600px) {
+  .comments,
+  .comments button {
+    font-size: 0.75rem;
   }
 }

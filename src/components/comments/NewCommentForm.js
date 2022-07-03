@@ -29,7 +29,12 @@ const NewCommentForm = (props) => {
       return;
     }
 
-    sendRequest({ commentData: { text }, quoteId: props.quoteId });
+    sendRequest({
+      commentData: { text },
+      quoteId: props.quoteId,
+      comments: props.comments,
+    });
+
     commentTextRef.current.value = "";
   };
 
@@ -52,7 +57,7 @@ const NewCommentForm = (props) => {
           id="comment"
           rows="5"
           ref={commentTextRef}
-          className={textValid ? undefined : classes.invalid}
+          className={textValid ? "" : classes.invalid}
           onBlur={textBlurHandler}
         ></textarea>
       </div>

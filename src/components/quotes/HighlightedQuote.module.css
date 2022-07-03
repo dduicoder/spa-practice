@@ -2,31 +2,32 @@
 
 .quote {
   text-align: center;
-  margin: 15vh 0 0 0;
+  margin-top: 15vh;
 }
 
 .quote p {
   font-family: "Cabin", sans-serif;
   font-weight: bold;
+}
+
+.select ::selection {
+  background-color: #ff8868;
+}
+
+.select p {
   font-size: 2rem;
   letter-spacing: 0.5px;
 }
 
-.quote ::selection {
-  background-color: #ff8868;
-}
-
-.quote figcaption {
-  font-family: "Cabin", sans-serif;
-  font-weight: bold;
+.author {
   font-size: 1.25rem;
 }
 
 @media (max-width: 600px) {
-  .quote p {
+  .select p {
     font-size: 1.5rem;
   }
-  .quote figcaption {
+  .author {
     font-size: 1rem;
   }
 }
@@ -56,38 +57,29 @@
   transition: transform 0.5s ease-in-out;
 }
 
-.copy {
-  position: relative;
-  margin: 2.5rem 0 3rem 0;
+.control {
+  margin: 2rem auto 3rem auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
 }
 
-.copy img {
+.control img {
+  display: block;
   cursor: pointer;
+  width: 1.5rem;
   transition: all 0.2s ease-in-out;
-  width: 2rem;
 }
 
-.copy img:active {
+.control img:active {
   transform: scale(0.8);
 }
 
-.click::before {
-  content: "copied";
-  position: absolute;
-  top: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  animation: fade-in-out 0.5s ease-in-out forwards;
+.control span {
+  display: block;
 }
 
-@keyframes fade-in-out {
-  0% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
+.control span:first-of-type {
+  cursor: pointer;
 }

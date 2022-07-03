@@ -1,7 +1,6 @@
 import { Fragment } from "react";
 import { useRef, useState } from "react";
 
-import LoadingSpinner from "../UI/LoadingSpinner";
 import classes from "./QuoteForm.module.css";
 
 const QuoteForm = (props) => {
@@ -24,7 +23,13 @@ const QuoteForm = (props) => {
       return;
     }
 
-    props.onAddQuote({ author: enteredAuthor, text: enteredText });
+    props.onAddQuote({
+      author: enteredAuthor,
+      text: enteredText,
+      like: 0,
+      view: 0,
+      comments: 0,
+    });
   };
 
   const authorBlurHandler = (event) => {
@@ -42,11 +47,6 @@ const QuoteForm = (props) => {
   return (
     <Fragment>
       <form className={`card ${classes.form}`} onSubmit={submitFormHandler}>
-        {props.isLoading && (
-          <div className={classes.loading}>
-            <LoadingSpinner />
-          </div>
-        )}
         <div
           className={`${classes.control} ${authorValid ? "" : classes.invalid}`}
         >

@@ -21,13 +21,13 @@ const MainNavigation = () => {
       <h1 className={classes.logo}>Quotes</h1>
       <div>
         <NavLink
-          to="/quotes"
+          to="quotes"
           className={({ isActive }) => (isActive ? classes.active : "")}
         >
           All Quotes
         </NavLink>
         <NavLink
-          to="/new-quote"
+          to="new-quote"
           className={({ isActive }) => (isActive ? classes.active : "")}
         >
           Add Quote

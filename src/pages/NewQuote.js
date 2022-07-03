@@ -2,6 +2,7 @@ import { useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
 import QuoteForm from "../components/quotes/QuoteForm";
+import LoadingSpinner from "../components/UI/LoadingSpinner";
 import useHttp from "../hooks/use-http";
 import { addQuote } from "../lib/api";
 
@@ -22,9 +23,15 @@ const NewQuote = () => {
     [sendRequest]
   );
 
-  return (
-    <QuoteForm isLoading={status === "pending"} onAddQuote={addQuotehandler} />
-  );
+  if (status === "pending") {
+    return (
+      <div className="centered">
+        <LoadingSpinner />
+      </div>
+    );
+  }
+
+  return <QuoteForm onAddQuote={addQuotehandler} />;
 };
 
 export default NewQuote;

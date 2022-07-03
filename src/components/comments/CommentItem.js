@@ -7,17 +7,12 @@ const CommentItem = (props) => {
 
   return (
     <li className={classes.item}>
-      <p>
-        {showMore ? props.text.substr(0, 150) + "..." : props.text}
-        {props.text.length > 150 && (
-          <button
-            onClick={() => (showMore ? setShowMore(false) : setShowMore(true))}
-            className={classes.see}
-          >
-            see {showMore ? "more" : "less"}
-          </button>
-        )}
-      </p>
+      {showMore ? props.text.substr(0, 150) + "..." : props.text}
+      {props.text.length > 150 && (
+        <button onClick={() => setShowMore(!showMore)} className={classes.see}>
+          see {showMore ? "more" : "less"}
+        </button>
+      )}
     </li>
   );
 };
