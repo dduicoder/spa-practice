@@ -1,7 +1,12 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-import copyImg from "./copy.png";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faClipboard } from "@fortawesome/free-regular-svg-icons";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { faHeart as regHeart } from "@fortawesome/free-regular-svg-icons";
+import { faEye } from "@fortawesome/free-regular-svg-icons";
+
 import useHttp from "../../hooks/use-http";
 import { addView, setLike } from "../../lib/api";
 import classes from "./HighlightedQuote.module.css";
@@ -23,12 +28,11 @@ const HighlightedQuote = (props) => {
     if (!click) {
       sendLike({ quoteId: quote.id, like: quote.like + 1 });
       setLikes(quote.like + 1);
-      setClick(true);
     } else {
       sendLike({ quoteId: quote.id, like: quote.like });
       setLikes(quote.like);
-      setClick(false);
     }
+    setClick(!click);
   };
 
   return (
@@ -40,18 +44,23 @@ const HighlightedQuote = (props) => {
       </div>
       <p className={classes.author}>- {quote.author} -</p>
       <div className={classes.control}>
-        <img
-          src={copyImg}
-          alt="copy"
+        <FontAwesomeIcon
           onClick={() =>
             navigator.clipboard.writeText(`"${quote.text}" - ${quote.author}`)
           }
+          icon={faClipboard}
         />
         <span onClick={likeHandler}>
-          {likes}
-          {click ? "❤️" : "🤍"}
+          {likes}{" "}
+          {click ? (
+            <FontAwesomeIcon icon={faHeart} />
+          ) : (
+            <FontAwesomeIcon icon={regHeart} />
+          )}
         </span>
-        <span>{quote.view}👁️‍🗨️</span>
+        <span>
+          {quote.view + 1} <FontAwesomeIcon icon={faEye} />
+        </span>
       </div>
       <Link className="btn" to="comments">
         Comments ({quote.comments})

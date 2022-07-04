@@ -9,6 +9,11 @@
   background-color: #a7d6ff;
 }
 
+textarea:focus-visible,
+input:focus-visible {
+  outline: none;
+}
+
 body {
   margin: 0;
 }
@@ -42,7 +47,7 @@ body {
   color: white;
   border-radius: 0.5rem;
   padding: 0.7rem 1rem;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.25s ease-in-out;
   cursor: pointer;
 }
 

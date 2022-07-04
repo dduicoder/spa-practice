@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 
 import classes from "./CommentsList.module.css";
 import CommentItem from "./CommentItem";
-import Pagination from "../layout/Pagination";
+import Pagination from "../UI/Pagination";
 
 const CommentsList = (props) => {
   const navigate = useNavigate();

@@ -54,7 +54,7 @@ const QuoteDetail = () => {
                 onClick={() => {
                   navigate("");
                 }}
-              ></div>
+              />
               <Comments comments={loadedQuote.comments} />
             </Fragment>,
             document.getElementById("overlays")

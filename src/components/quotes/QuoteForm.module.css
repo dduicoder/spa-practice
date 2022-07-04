@@ -12,6 +12,23 @@
   margin-bottom: 1rem;
 }
 
+.control input,
+.control textarea {
+  font: inherit;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid #dedede;
+  display: block;
+  width: 100%;
+  transition: all 0.25s ease-in-out;
+}
+
+.control input:focus,
+.control textarea:focus {
+  outline: none;
+  border-color: #9b9b9b;
+}
+
 .invalid input,
 .invalid textarea {
   border-color: #ff8383 !important;
@@ -22,23 +39,6 @@
 .invalid textarea:focus {
   border-color: #ffd298 !important;
   background-color: #fff8ee;
-}
-
-.control input,
-.control textarea {
-  font: inherit;
-  padding: 0.4rem;
-  border-radius: 4px;
-  border: 1px solid #dedede;
-  display: block;
-  width: 100%;
-  transition: all 0.15s ease-in-out;
-}
-
-.control input:focus,
-.control textarea:focus {
-  outline: none;
-  border-color: #9b9b9b;
 }
 
 .actions {

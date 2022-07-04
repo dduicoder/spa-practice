@@ -4,16 +4,6 @@
   text-align: center;
 }
 
-.loading {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-color: #ffffffb3;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .control {
   margin-bottom: 0.5rem;
 }
@@ -25,17 +15,13 @@
 
 .control textarea {
   font: inherit;
-  padding: 0.4rem;
-  border-radius: 4px;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
   border: 1px solid #dedede;
   display: block;
   width: min(100%, 30rem);
   margin: 1rem auto;
-  transition: all 0.15s ease-in-out;
-}
-
-.control textarea:focus-visible {
-  outline: none;
+  transition: all 0.25s ease-in-out;
 }
 
 .control textarea:focus {

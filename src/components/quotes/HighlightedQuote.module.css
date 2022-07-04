@@ -65,15 +65,13 @@
   gap: 1rem;
 }
 
-.control img {
-  display: block;
+.control > svg {
   cursor: pointer;
-  width: 1.5rem;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.25s ease-in-out;
 }
 
-.control img:active {
-  transform: scale(0.8);
+.control > svg:active {
+  transform: scale(0.9);
 }
 
 .control span {

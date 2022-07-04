@@ -10,7 +10,7 @@
   max-height: 80vh;
   z-index: 30;
   overflow-y: scroll;
-  animation: pop-down 0.2s ease-in-out;
+  animation: pop-down 0.25s ease-in-out;
   background-color: white;
 }
 

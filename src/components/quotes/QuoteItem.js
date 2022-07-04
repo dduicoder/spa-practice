@@ -1,4 +1,10 @@
 import { Link } from "react-router-dom";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart } from "@fortawesome/free-regular-svg-icons";
+import { faEye } from "@fortawesome/free-regular-svg-icons";
+import { faComment } from "@fortawesome/free-regular-svg-icons";
+
 import classes from "./QuoteItem.module.css";
 
 const QuoteItem = (props) => {
@@ -14,7 +20,9 @@ const QuoteItem = (props) => {
         </blockquote>
         <figcaption>{quote.author}</figcaption>
         <span>
-          ❤️{quote.like} • 👁️‍🗨️{quote.view} • 💬{quote.comments}
+          <FontAwesomeIcon icon={faHeart} /> {quote.like} •{" "}
+          <FontAwesomeIcon icon={faEye} /> {quote.view} •{" "}
+          <FontAwesomeIcon icon={faComment} /> {quote.comments}
         </span>
       </figure>
       <Link className="btn" to={`/quotes/${quote.id}`}>

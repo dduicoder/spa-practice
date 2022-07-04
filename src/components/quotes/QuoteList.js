@@ -2,8 +2,8 @@ import { Fragment, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 
 import QuoteItem from "./QuoteItem";
-import Pagination from "../layout/Pagination";
-import Select from "../layout/Select";
+import Pagination from "../UI/Pagination";
+import Select from "../UI/Select";
 import classes from "./QuoteList.module.css";
 
 const QuoteList = (props) => {
