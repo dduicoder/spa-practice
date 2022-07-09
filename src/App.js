@@ -10,7 +10,6 @@ const NotFound = React.lazy(() => import("./pages/NotFound"));
 const AllQuotes = React.lazy(() => import("./pages/AllQuotes"));
 const Auth = React.lazy(() => import("./pages/Auth"));
 
-// 로그인 기능
 // 검색 기능
 // 모바일 네비게이션
 
