@@ -32,26 +32,22 @@ const AuthForm = () => {
 
     setIsLoading(true);
 
-    let url;
-
-    if (login) {
-      url =
-        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDwcWLg1dyNAFokhuFyPXQfHB2_ZDqkwSQ";
-    } else {
-      url =
-        "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDwcWLg1dyNAFokhuFyPXQfHB2_ZDqkwSQ";
-    }
-    fetch(url, {
-      method: "POST",
-      body: JSON.stringify({
-        email,
-        password,
-        returnSecureToken: true,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
+    fetch(
+      `https://identitytoolkit.googleapis.com/v1/accounts:${
+        login ? "signInWithPassword" : "signUp"
+      }?key=AIzaSyDwcWLg1dyNAFokhuFyPXQfHB2_ZDqkwSQ`,
+      {
+        method: "POST",
+        body: JSON.stringify({
+          email,
+          password,
+          returnSecureToken: true,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
       .then((res) => {
         setIsLoading(false);
         if (res.ok) {
@@ -68,7 +64,7 @@ const AuthForm = () => {
         );
         authCtx.login(data.idToken, expirationTime.toISOString());
         navigate({
-          pathname: "../",
+          pathname: "../quotes?page=1&limit=10&sort=view",
         });
       })
       .catch((err) => {

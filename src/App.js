@@ -11,7 +11,6 @@ const AllQuotes = React.lazy(() => import("./pages/AllQuotes"));
 const Auth = React.lazy(() => import("./pages/Auth"));
 
 // 검색 기능
-// 모바일 네비게이션
 
 const App = () => {
   return (

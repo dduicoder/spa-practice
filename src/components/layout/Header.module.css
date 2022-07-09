@@ -16,7 +16,7 @@
   color: white;
 }
 
-.header div {
+.header nav {
   display: flex;
   gap: 1rem;
 }
@@ -47,4 +47,19 @@
 .header a.active {
   color: white;
   border-color: white;
+}
+
+.hamberger {
+  display: none;
+  cursor: pointer;
+  color: white;
+}
+
+@media (max-width: 600px) {
+  .hamberger {
+    display: block;
+  }
+  .header nav {
+    display: none;
+  }
 }

@@ -1,6 +1,7 @@
 import { useRef, useState, useContext } from "react";
-import Prompt from "../UI/Prompt";
+import { Link } from "react-router-dom";
 
+import Prompt from "../UI/Prompt";
 import AuthContext from "../../store/auth-context";
 import classes from "./QuoteForm.module.css";
 
@@ -61,7 +62,7 @@ const QuoteForm = (props) => {
             setShowPrompt(false);
           }}
         >
-          Please log in to post a quote
+          Please log in to post a quote <Link to="../auth">Log in</Link>
         </Prompt>
       )}
       <label htmlFor="author">Author</label>

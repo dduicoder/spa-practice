@@ -56,9 +56,3 @@ body {
 .btn:active {
   background-color: #5d5d5d;
 }
-
-/* @media (max-width: 600px) {
-  .btn {
-    font-size: 0.75rem;
-  }
-} */

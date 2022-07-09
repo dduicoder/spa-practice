@@ -23,15 +23,6 @@
   font-size: 1.25rem;
 }
 
-/* @media (max-width: 600px) {
-  .select p {
-    font-size: 1.5rem;
-  }
-  .author {
-    font-size: 1rem;
-  }
-} */
-
 .text {
   position: relative;
   width: 100%;

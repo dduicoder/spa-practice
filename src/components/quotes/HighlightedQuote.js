@@ -53,7 +53,7 @@ const HighlightedQuote = (props) => {
             setShowPrompt(false);
           }}
         >
-          Please log in to like a quote
+          Please log in to like a quote <Link to="../auth">Log in</Link>
         </Prompt>
       )}
       <div className={classes.select}>
@@ -81,7 +81,7 @@ const HighlightedQuote = (props) => {
           {quote.view + 1} <FontAwesomeIcon icon={faEye} />
         </span>
       </div>
-      <Link className="btn" to="comments">
+      <Link className="btn" to="comments?page=1">
         Comments
       </Link>
     </section>

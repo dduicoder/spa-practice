@@ -1,0 +1,52 @@
+.nav {
+  text-align: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 55vw;
+  padding: 1rem;
+  z-index: 5;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  animation: pop-left 0.25s ease-in-out;
+}
+
+.nav p {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+  margin: 0;
+}
+
+.nav a,
+.nav button {
+  cursor: pointer;
+  text-decoration: none;
+  color: black;
+  background-color: white;
+  border: none;
+  font-size: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  border-radius: 1rem;
+}
+
+.active {
+  background-color: #434343 !important;
+  color: white !important;
+}
+
+@keyframes pop-left {
+  from {
+    opacity: 0;
+    right: -55vw;
+  }
+  to {
+    opacity: 1;
+    right: 0;
+  }
+}

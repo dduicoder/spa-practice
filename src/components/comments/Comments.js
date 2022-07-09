@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback, useContext } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
-import NewCommentForm from "./NewCommentForm";
+import NewCommentForm from "./CommentForm";
 import LoadingSpinner from "../UI/LoadingSpinner";
 import Prompt from "../UI/Prompt";
 import CommentsList from "./CommentsList";
@@ -67,7 +67,7 @@ const Comments = () => {
             setShowPrompt(false);
           }}
         >
-          Please log in to right a comment
+          Please log in to right a comment <Link to="../../auth">Log in</Link>
         </Prompt>
       )}
       <h2>Comments ({loadedComments ? loadedComments.length : 0})</h2>

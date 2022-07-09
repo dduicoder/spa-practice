@@ -12,7 +12,7 @@ const NewQuote = () => {
 
   useEffect(() => {
     if (status === "completed") {
-      navigate("../quotes");
+      navigate("../quotes?page=1&limit=10&sort=new");
     }
   }, [status, navigate]);
 

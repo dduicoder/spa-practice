@@ -2,9 +2,9 @@ import { useRef, useState, useEffect } from "react";
 
 import useHttp from "../../hooks/use-http";
 import { addComment } from "../../lib/api";
-import classes from "./NewCommentForm.module.css";
+import classes from "./CommentForm.module.css";
 
-const NewCommentForm = (props) => {
+const CommentForm = (props) => {
   const commentTextRef = useRef();
   const [textValid, setTextValid] = useState(true);
 
@@ -66,4 +66,4 @@ const NewCommentForm = (props) => {
   );
 };
 
-export default NewCommentForm;
+export default CommentForm;
