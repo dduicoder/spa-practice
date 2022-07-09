@@ -6,7 +6,7 @@
 }
 
 * ::selection {
-  background-color: #a7d6ff;
+  background-color: #bcdcff;
 }
 
 textarea:focus-visible,
@@ -41,12 +41,13 @@ body {
 
 .btn {
   border: none;
+  outline: none;
   text-decoration: none;
   font-size: 1rem;
   background-color: #434343;
   color: white;
   border-radius: 0.5rem;
-  padding: 0.7rem 1rem;
+  padding: 0.75rem 1rem;
   transition: all 0.25s ease-in-out;
   cursor: pointer;
 }
@@ -56,8 +57,8 @@ body {
   background-color: #5d5d5d;
 }
 
-@media (max-width: 600px) {
+/* @media (max-width: 600px) {
   .btn {
     font-size: 0.75rem;
   }
-}
+} */

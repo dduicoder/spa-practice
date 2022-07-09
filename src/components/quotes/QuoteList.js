@@ -33,14 +33,14 @@ const QuoteList = (props) => {
   } else if (sort === "view") {
     sortedQuotes = props.quotes.sort((quoteA, quoteB) => {
       if (quoteA.view === quoteB.view) {
-        return quoteA.id < quoteB.id ? 1 : -1;
+        return quoteA.like < quoteB.like ? 1 : -1;
       }
       return quoteA.view < quoteB.view ? 1 : -1;
     });
   } else if (sort === "like") {
     sortedQuotes = props.quotes.sort((quoteA, quoteB) => {
       if (quoteA.like === quoteB.like) {
-        return quoteA.id < quoteB.id ? 1 : -1;
+        return quoteA.view < quoteB.view ? 1 : -1;
       }
       return quoteA.like < quoteB.like ? 1 : -1;
     });

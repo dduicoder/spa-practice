@@ -55,7 +55,7 @@ const QuoteDetail = () => {
                   navigate("");
                 }}
               />
-              <Comments comments={loadedQuote.comments} />
+              <Comments />
             </Fragment>,
             document.getElementById("overlays")
           )}

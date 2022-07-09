@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -10,12 +10,17 @@ import { faEye } from "@fortawesome/free-regular-svg-icons";
 import useHttp from "../../hooks/use-http";
 import { addView, setLike } from "../../lib/api";
 import classes from "./HighlightedQuote.module.css";
+import AuthContext from "../../store/auth-context";
+import Prompt from "../UI/Prompt";
 
 const HighlightedQuote = (props) => {
   const quote = props.quote;
 
   const [click, setClick] = useState(false);
   const [likes, setLikes] = useState(quote.like);
+  const [showPrompt, setShowPrompt] = useState(false);
+
+  const authCtx = useContext(AuthContext);
 
   const { sendRequest: sendView } = useHttp(addView);
   const { sendRequest: sendLike } = useHttp(setLike);
@@ -25,6 +30,11 @@ const HighlightedQuote = (props) => {
   }, [sendView, quote]);
 
   const likeHandler = () => {
+    if (!authCtx.loggedIn) {
+      setShowPrompt(true);
+      return;
+    }
+
     if (!click) {
       sendLike({ quoteId: quote.id, like: quote.like + 1 });
       setLikes(quote.like + 1);
@@ -37,6 +47,15 @@ const HighlightedQuote = (props) => {
 
   return (
     <section className={classes.quote}>
+      {showPrompt && (
+        <Prompt
+          onClick={() => {
+            setShowPrompt(false);
+          }}
+        >
+          Please log in to like a quote
+        </Prompt>
+      )}
       <div className={classes.select}>
         <p>"</p>
         <p className={classes.text}>{quote.text}</p>
@@ -63,7 +82,7 @@ const HighlightedQuote = (props) => {
         </span>
       </div>
       <Link className="btn" to="comments">
-        Comments ({quote.comments})
+        Comments
       </Link>
     </section>
   );

@@ -1,0 +1,24 @@
+.prompt {
+  position: fixed;
+  top: 5vh;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: white;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+  animation: pop-down 0.25s ease-in-out;
+  cursor: pointer;
+}
+
+@keyframes pop-down {
+  from {
+    top: 2.5vh;
+    opacity: 0;
+  }
+  to {
+    top: 5vh;
+    opacity: 1;
+  }
+}

@@ -27,7 +27,7 @@
   font-size: 0.75rem;
 }
 
-@media (max-width: 600px) {
+/* @media (max-width: 600px) {
   .item blockquote {
     font-size: 1rem;
   }
@@ -37,4 +37,4 @@
   .item span {
     font-size: 0.5rem;
   }
-}
+} */

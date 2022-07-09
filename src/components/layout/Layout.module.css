@@ -1,10 +1,11 @@
 .main {
   margin: 3rem auto;
-  width: min(90%, 45rem);
+  padding: 0 1.5rem;
+  width: min(100%, 45rem);
 }
 
-@media (max-width: 600px) {
+/* @media (max-width: 600px) {
   .main {
     margin: 2rem auto;
   }
-}
+} */

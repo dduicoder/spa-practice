@@ -11,35 +11,40 @@
   transition: 0.25s;
 }
 
-.logo {
+.header h1 {
   font-size: 1.5rem;
   color: white;
 }
 
-.header a {
+.header div {
+  display: flex;
+  gap: 1rem;
+}
+
+.header a,
+.btn {
   text-decoration: none;
-  margin-left: 1rem;
   padding: 5px 0;
   color: #cdcdcd;
   transition: all 0.25s ease-in-out;
   border-bottom: 1px solid #434343;
+  cursor: pointer;
 }
 
+.btn {
+  background: transparent;
+  border: none;
+  transition: all 0.25s ease-in-out;
+  border-bottom: 1px solid #434343;
+  font-size: 1rem;
+  padding: 5px 0;
+}
+
+.btn:hover,
+.btn:active,
 .header a:hover,
 .header a:active,
 .header a.active {
   color: white;
   border-color: white;
-}
-
-@media (max-width: 600px) {
-  .header a {
-    font-size: 0.75rem;
-  }
-  .logo {
-    font-size: 1rem;
-  }
-  .header {
-    height: 3rem;
-  }
 }

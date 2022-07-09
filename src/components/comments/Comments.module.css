@@ -8,7 +8,7 @@
   padding: 1.5rem;
   border-radius: 1.5rem;
   max-height: 80vh;
-  z-index: 30;
+  z-index: 3;
   overflow-y: scroll;
   animation: pop-down 0.25s ease-in-out;
   background-color: white;
@@ -29,9 +29,9 @@
   }
 }
 
-@media (max-width: 600px) {
+/* @media (max-width: 600px) {
   .comments,
   .comments button {
     font-size: 0.75rem;
   }
-}
+} */

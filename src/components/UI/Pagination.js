@@ -1,3 +1,7 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+
 import classes from "./Pagination.module.css";
 
 const Pagination = ({ total, limit, page, setPage }) => {
@@ -9,7 +13,9 @@ const Pagination = ({ total, limit, page, setPage }) => {
 
   return (
     <footer className={`centered ${classes.footer}`}>
-      {page !== 1 && <button onClick={() => setPage(page - 1)}>&lt;</button>}
+      {page !== 1 && (
+        <FontAwesomeIcon onClick={() => setPage(page - 1)} icon={faArrowLeft} />
+      )}
       {Array(numPages)
         .fill()
         .map((_, i) => (
@@ -22,7 +28,10 @@ const Pagination = ({ total, limit, page, setPage }) => {
           </button>
         ))}
       {page !== numPages && (
-        <button onClick={() => setPage(page + 1)}>&gt;</button>
+        <FontAwesomeIcon
+          onClick={() => setPage(page + 1)}
+          icon={faArrowRight}
+        />
       )}
     </footer>
   );

@@ -1,11 +1,14 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { NavLink } from "react-router-dom";
+import AuthContext from "../../store/auth-context";
 
 import classes from "./MainNavigation.module.css";
 
 const MainNavigation = () => {
   const [show, setShow] = useState(true);
   const [lastScroll, setLastScroll] = useState(0);
+
+  const authCtx = useContext(AuthContext);
 
   window.onscroll = () => {
     if (document.documentElement.scrollTop > lastScroll) {
@@ -18,7 +21,7 @@ const MainNavigation = () => {
 
   return (
     <header className={classes.header} style={{ top: show ? "0" : "-4rem" }}>
-      <h1 className={classes.logo}>Quotes</h1>
+      <h1>Quotes</h1>
       <div>
         <NavLink
           to="quotes"
@@ -32,6 +35,23 @@ const MainNavigation = () => {
         >
           Add Quote
         </NavLink>
+        {authCtx.loggedIn ? (
+          <button
+            className={classes.btn}
+            onClick={() => {
+              authCtx.logout();
+            }}
+          >
+            Logout
+          </button>
+        ) : (
+          <NavLink
+            to="auth"
+            className={({ isActive }) => (isActive ? classes.active : "")}
+          >
+            Login
+          </NavLink>
+        )}
       </div>
     </header>
   );

@@ -1,14 +1,18 @@
-import { Fragment } from "react";
-import { useRef, useState } from "react";
+import { useRef, useState, useContext } from "react";
+import Prompt from "../UI/Prompt";
 
+import AuthContext from "../../store/auth-context";
 import classes from "./QuoteForm.module.css";
 
 const QuoteForm = (props) => {
   const [authorValid, setAuthorValid] = useState(true);
   const [textValid, setTextValid] = useState(true);
+  const [showPrompt, setShowPrompt] = useState(false);
 
   const authorInputRef = useRef();
   const textInputRef = useRef();
+
+  const authCtx = useContext(AuthContext);
 
   const submitFormHandler = (event) => {
     event.preventDefault();
@@ -18,6 +22,11 @@ const QuoteForm = (props) => {
 
     setAuthorValid(enteredAuthor.trim().length !== 0);
     setTextValid(enteredText.trim().length !== 0);
+
+    if (!authCtx.loggedIn) {
+      setShowPrompt(true);
+      return;
+    }
 
     if (enteredAuthor.trim().length === 0 || enteredText.trim().length === 0) {
       return;
@@ -45,35 +54,36 @@ const QuoteForm = (props) => {
   };
 
   return (
-    <Fragment>
-      <form className={`card ${classes.form}`} onSubmit={submitFormHandler}>
-        <div
-          className={`${classes.control} ${authorValid ? "" : classes.invalid}`}
+    <form className={`card ${classes.form}`} onSubmit={submitFormHandler}>
+      {showPrompt && (
+        <Prompt
+          onClick={() => {
+            setShowPrompt(false);
+          }}
         >
-          <label htmlFor="author">Author</label>
-          <input
-            type="text"
-            id="author"
-            ref={authorInputRef}
-            onBlur={authorBlurHandler}
-          />
-        </div>
-        <div
-          className={`${classes.control} ${textValid ? "" : classes.invalid}`}
-        >
-          <label htmlFor="text">Text</label>
-          <textarea
-            id="text"
-            rows="5"
-            ref={textInputRef}
-            onBlur={textBlurHandler}
-          ></textarea>
-        </div>
-        <div className={classes.actions}>
-          <button className="btn">Add Quote</button>
-        </div>
-      </form>
-    </Fragment>
+          Please log in to post a quote
+        </Prompt>
+      )}
+      <label htmlFor="author">Author</label>
+      <input
+        className={authorValid ? "" : classes.invalid}
+        type="text"
+        id="author"
+        ref={authorInputRef}
+        onBlur={authorBlurHandler}
+      />
+      <label htmlFor="text">Text</label>
+      <textarea
+        className={textValid ? "" : classes.invalid}
+        id="text"
+        rows="5"
+        ref={textInputRef}
+        onBlur={textBlurHandler}
+      ></textarea>
+      <div className={classes.actions}>
+        <button className="btn">Add Quote</button>
+      </div>
+    </form>
   );
 };
 

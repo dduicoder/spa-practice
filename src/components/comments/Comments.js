@@ -1,16 +1,21 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useContext } from "react";
 import { useParams } from "react-router-dom";
 
 import NewCommentForm from "./NewCommentForm";
 import LoadingSpinner from "../UI/LoadingSpinner";
+import Prompt from "../UI/Prompt";
 import CommentsList from "./CommentsList";
 import useHttp from "../../hooks/use-http";
 import { getAllComments } from "../../lib/api";
+import AuthContext from "../../store/auth-context";
 import classes from "./Comments.module.css";
 
-const Comments = (props) => {
+const Comments = () => {
   const [isAddingComment, setIsAddingComment] = useState(false);
+  const [showPrompt, setShowPrompt] = useState(false);
   const params = useParams();
+
+  const AuthCtx = useContext(AuthContext);
 
   const { sendRequest, status, data: loadedComments } = useHttp(getAllComments);
 
@@ -24,6 +29,14 @@ const Comments = (props) => {
     sendRequest(quoteId);
     setIsAddingComment(false);
   }, [sendRequest, quoteId]);
+
+  const setCommentFormHandler = () => {
+    if (!AuthCtx.loggedIn) {
+      setShowPrompt(true);
+      return;
+    }
+    setIsAddingComment(true);
+  };
 
   let comments;
 
@@ -48,16 +61,25 @@ const Comments = (props) => {
 
   return (
     <section className={`card ${classes.comments}`}>
-      <h2>User Comments ({props.comments})</h2>
+      {showPrompt && (
+        <Prompt
+          onClick={() => {
+            setShowPrompt(false);
+          }}
+        >
+          Please log in to right a comment
+        </Prompt>
+      )}
+      <h2>Comments ({loadedComments ? loadedComments.length : 0})</h2>
       {comments}
       {isAddingComment ? (
         <NewCommentForm
           quoteId={quoteId}
           onAddedComment={addCommentHandler}
-          comments={loadedComments.length}
+          comments={loadedComments ? loadedComments.length : 0}
         />
       ) : (
-        <button className="btn" onClick={() => setIsAddingComment(true)}>
+        <button className="btn" onClick={setCommentFormHandler}>
           Add Comment
         </button>
       )}
