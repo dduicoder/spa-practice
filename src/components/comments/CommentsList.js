@@ -1,9 +1,9 @@
 import { Fragment, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 
-import classes from "./CommentsList.module.css";
 import CommentItem from "./CommentItem";
 import Pagination from "../UI/Pagination";
+import classes from "./CommentsList.module.css";
 
 const CommentsList = (props) => {
   const navigate = useNavigate();
@@ -32,6 +32,8 @@ const CommentsList = (props) => {
 
   return (
     <Fragment>
+      {props.comments.length < offset ||
+        (page === 0 && <p className="centered">Wrong Page</p>)}
       <ul className={classes.comments}>
         {props.comments.slice(offset, offset + limit).map((comment) => (
           <CommentItem key={comment.id} text={comment.text} />

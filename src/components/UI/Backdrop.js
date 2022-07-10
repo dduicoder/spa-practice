@@ -1,9 +1,9 @@
 import { createPortal } from "react-dom";
-import CSSTransition from "react-transition-group/CSSTransition";
+import { CSSTransition } from "react-transition-group";
 
-import classes from "./Prompt.module.css";
+import classes from "./Backdrop.module.css";
 
-const Prompt = (props) => {
+const Backdrop = (props) => {
   return createPortal(
     <CSSTransition
       mountOnEnter
@@ -15,12 +15,10 @@ const Prompt = (props) => {
         exitActive: classes.close,
       }}
     >
-      <div className={classes.prompt} onClick={props.close}>
-        {props.children}
-      </div>
+      <div className={classes.backdrop} onClick={props.close} />
     </CSSTransition>,
     document.getElementById("overlays")
   );
 };
 
-export default Prompt;
+export default Backdrop;

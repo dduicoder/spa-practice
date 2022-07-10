@@ -1,13 +1,13 @@
 import { useState, useEffect, useCallback, useContext } from "react";
 import { Link, useParams } from "react-router-dom";
+import { getAllComments } from "../../lib/api";
+import AuthContext from "../../store/auth-context";
 
 import NewCommentForm from "./CommentForm";
 import LoadingSpinner from "../UI/LoadingSpinner";
 import Prompt from "../UI/Prompt";
 import CommentsList from "./CommentsList";
 import useHttp from "../../hooks/use-http";
-import { getAllComments } from "../../lib/api";
-import AuthContext from "../../store/auth-context";
 import classes from "./Comments.module.css";
 
 const Comments = () => {
@@ -61,15 +61,14 @@ const Comments = () => {
 
   return (
     <section className={`card ${classes.comments}`}>
-      {showPrompt && (
-        <Prompt
-          onClick={() => {
-            setShowPrompt(false);
-          }}
-        >
-          Please log in to right a comment <Link to="../../auth">Log in</Link>
-        </Prompt>
-      )}
+      <Prompt
+        show={showPrompt}
+        close={() => {
+          setShowPrompt(false);
+        }}
+      >
+        Please log in to leave a comment <Link to="../../auth">Log in</Link>
+      </Prompt>
       <h2>Comments ({loadedComments ? loadedComments.length : 0})</h2>
       {comments}
       {isAddingComment ? (
@@ -80,7 +79,7 @@ const Comments = () => {
         />
       ) : (
         <button className="btn" onClick={setCommentFormHandler}>
-          Add Comment
+          Leave Comment
         </button>
       )}
     </section>

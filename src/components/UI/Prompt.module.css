@@ -1,20 +1,27 @@
 .prompt {
   position: fixed;
-  top: 5vh;
   left: 50%;
+  top: 5vh;
   transform: translateX(-50%);
   z-index: 10;
   padding: 1rem;
   border-radius: 1rem;
   background-color: white;
   box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
-  animation: pop-down 0.25s ease-in-out;
   cursor: pointer;
 }
 
 .prompt a {
-  color: rgb(125, 125, 250);
+  color: #0071e3;
   text-decoration: none;
+}
+
+.open {
+  animation: pop-down 0.25s ease-in-out forwards;
+}
+
+.close {
+  animation: pop-up 0.25s ease-in-out forwards;
 }
 
 @keyframes pop-down {
@@ -25,5 +32,16 @@
   to {
     top: 5vh;
     opacity: 1;
+  }
+}
+
+@keyframes pop-up {
+  from {
+    top: 5vh;
+    opacity: 1;
+  }
+  to {
+    top: 2.5vh;
+    opacity: 0;
   }
 }

@@ -1,11 +1,13 @@
 import { useState, useContext, Fragment } from "react";
 import { createPortal } from "react-dom";
 import { NavLink } from "react-router-dom";
+import AuthContext from "../../store/auth-context";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
+
 import SideNavigation from "./SideNavigation";
-import AuthContext from "../../store/auth-context";
+import Backdrop from "../UI/Backdrop";
 import classes from "./Header.module.css";
 
 const MainHeader = () => {
@@ -26,23 +28,23 @@ const MainHeader = () => {
 
   return (
     <header className={classes.header} style={{ top: show ? "0" : "-4rem" }}>
-      {showSide &&
-        createPortal(
-          <Fragment>
-            <div
-              className="backdrop"
-              onClick={() => {
-                setShowSide(false);
-              }}
-            />
-            <SideNavigation
-              onClick={() => {
-                setShowSide(false);
-              }}
-            />
-          </Fragment>,
-          document.getElementById("overlays")
-        )}
+      <Backdrop
+        show={showSide}
+        close={() => {
+          setShowSide(false);
+        }}
+      />
+      {createPortal(
+        <Fragment>
+          <SideNavigation
+            show={showSide}
+            close={() => {
+              setShowSide(false);
+            }}
+          />
+        </Fragment>,
+        document.getElementById("overlays")
+      )}
       <h1>Quotes</h1>
       <FontAwesomeIcon
         icon={faBars}

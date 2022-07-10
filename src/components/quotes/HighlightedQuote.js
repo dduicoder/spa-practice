@@ -1,5 +1,8 @@
 import { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
+import useHttp from "../../hooks/use-http";
+import { addView, setLike } from "../../lib/api";
+import AuthContext from "../../store/auth-context";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClipboard } from "@fortawesome/free-regular-svg-icons";
@@ -7,11 +10,8 @@ import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as regHeart } from "@fortawesome/free-regular-svg-icons";
 import { faEye } from "@fortawesome/free-regular-svg-icons";
 
-import useHttp from "../../hooks/use-http";
-import { addView, setLike } from "../../lib/api";
-import classes from "./HighlightedQuote.module.css";
-import AuthContext from "../../store/auth-context";
 import Prompt from "../UI/Prompt";
+import classes from "./HighlightedQuote.module.css";
 
 const HighlightedQuote = (props) => {
   const quote = props.quote;
@@ -47,15 +47,14 @@ const HighlightedQuote = (props) => {
 
   return (
     <section className={classes.quote}>
-      {showPrompt && (
-        <Prompt
-          onClick={() => {
-            setShowPrompt(false);
-          }}
-        >
-          Please log in to like a quote <Link to="../auth">Log in</Link>
-        </Prompt>
-      )}
+      <Prompt
+        show={showPrompt}
+        close={() => {
+          setShowPrompt(false);
+        }}
+      >
+        Please log in to like a quote <Link to="../auth">Log in</Link>
+      </Prompt>
       <div className={classes.select}>
         <p>"</p>
         <p className={classes.text}>{quote.text}</p>

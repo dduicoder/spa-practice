@@ -4,10 +4,6 @@
   text-align: center;
 }
 
-.control {
-  margin-bottom: 0.5rem;
-}
-
 .control label {
   font-weight: bold;
   display: block;
@@ -17,10 +13,9 @@
   font: inherit;
   padding: 0.5rem;
   border-radius: 0.5rem;
+  margin: 1rem 0;
   border: 1px solid #dedede;
-  display: block;
   width: min(100%, 30rem);
-  margin: 1rem auto;
   transition: all 0.25s ease-in-out;
 }
 

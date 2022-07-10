@@ -7,6 +7,7 @@ import { getSingleQuote } from "../lib/api";
 import Comments from "../components/comments/Comments";
 import HighlightedQuote from "../components/quotes/HighlightedQuote";
 import LoadingSpinner from "../components/UI/LoadingSpinner";
+import Backdrop from "../components/UI/Backdrop";
 
 const QuoteDetail = () => {
   const params = useParams();
@@ -46,19 +47,18 @@ const QuoteDetail = () => {
       <HighlightedQuote quote={loadedQuote} />
       <Routes>
         <Route
-          path={"/comments"}
-          element={createPortal(
+          path="/comments"
+          element={
             <Fragment>
-              <div
-                className="backdrop"
-                onClick={() => {
+              <Backdrop
+                show={true}
+                close={() => {
                   navigate("");
                 }}
               />
-              <Comments />
-            </Fragment>,
-            document.getElementById("overlays")
-          )}
+              {createPortal(<Comments />, document.getElementById("overlays"))}
+            </Fragment>
+          }
         />
       </Routes>
     </Fragment>

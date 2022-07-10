@@ -1,12 +1,12 @@
 import { useRef, useState, useEffect } from "react";
-
 import useHttp from "../../hooks/use-http";
 import { addComment } from "../../lib/api";
+
 import classes from "./CommentForm.module.css";
 
 const CommentForm = (props) => {
-  const commentTextRef = useRef();
   const [textValid, setTextValid] = useState(true);
+  const commentTextRef = useRef();
 
   const { sendRequest, status, error } = useHttp(addComment);
 
@@ -55,13 +55,11 @@ const CommentForm = (props) => {
           onBlur={textBlurHandler}
         ></textarea>
       </div>
-      <div className={classes.actions}>
-        {status === "pending" ? (
-          "Sending..."
-        ) : (
-          <button className="btn">Add Comment</button>
-        )}
-      </div>
+      {status === "pending" ? (
+        "Sending..."
+      ) : (
+        <button className="btn">Leave Comment</button>
+      )}
     </form>
   );
 };

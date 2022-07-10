@@ -1,8 +1,8 @@
 import { useRef, useState, useContext } from "react";
 import { Link } from "react-router-dom";
+import AuthContext from "../../store/auth-context";
 
 import Prompt from "../UI/Prompt";
-import AuthContext from "../../store/auth-context";
 import classes from "./QuoteForm.module.css";
 
 const QuoteForm = (props) => {
@@ -56,15 +56,14 @@ const QuoteForm = (props) => {
 
   return (
     <form className={`card ${classes.form}`} onSubmit={submitFormHandler}>
-      {showPrompt && (
-        <Prompt
-          onClick={() => {
-            setShowPrompt(false);
-          }}
-        >
-          Please log in to post a quote <Link to="../auth">Log in</Link>
-        </Prompt>
-      )}
+      <Prompt
+        show={showPrompt}
+        close={() => {
+          setShowPrompt(false);
+        }}
+      >
+        Please log in to post a quote <Link to="../auth">Log in</Link>
+      </Prompt>
       <label htmlFor="author">Author</label>
       <input
         className={authorValid ? "" : classes.invalid}
