@@ -5,17 +5,56 @@
   left: 50%;
   transform: translateX(-50%);
   width: min(90%, 40rem);
+  border-radius: 2rem;
   max-height: 80vh;
   z-index: 5;
   overflow-y: scroll;
-  animation: pop-down 0.25s ease-in-out;
 }
 
 .comments::-webkit-scrollbar {
   display: none;
 }
 
-@keyframes pop-down {
+.control {
+  margin: 1rem auto;
+  width: min(100%, 35rem);
+  height: 3rem;
+  position: relative;
+}
+
+.control div,
+.control h2 {
+  position: absolute;
+  top: 50%;
+  margin: 0;
+}
+
+.control div {
+  left: 0;
+  transform: translateY(-50%);
+  text-align: left;
+}
+
+.title {
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.control h2:last-child {
+  right: 0;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.open {
+  animation: fade-in 0.25s ease-in-out forwards;
+}
+
+.close {
+  animation: fade-out 0.25s ease-in-out forwards;
+}
+
+@keyframes fade-in {
   from {
     opacity: 0;
     top: 5vh;
@@ -23,5 +62,16 @@
   to {
     opacity: 1;
     top: 10vh;
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+    top: 10vh;
+  }
+  to {
+    opacity: 0;
+    top: 5vh;
   }
 }

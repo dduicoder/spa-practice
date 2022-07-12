@@ -1,11 +1,12 @@
 import { useRef, useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import AuthContext from "../../store/auth-context";
 
 import classes from "./AuthForm.module.css";
 
 const AuthForm = () => {
   const navigate = useNavigate();
+  const location = useLocation();
 
   const [login, setLogin] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
@@ -63,7 +64,7 @@ const AuthForm = () => {
           new Date().getTime() + +data.expiresIn * 1000
         );
         authCtx.login(data.idToken, expirationTime.toISOString());
-        navigate(-1);
+        navigate(location.key === "default" ? "../" : -1);
       })
       .catch((err) => {
         alert(err.message);

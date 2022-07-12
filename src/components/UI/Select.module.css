@@ -10,7 +10,6 @@
   position: absolute;
   left: 0;
   list-style: none;
-  animation: fade-in 0.25s ease-in-out;
   border-radius: 0.5rem;
 }
 
@@ -29,11 +28,28 @@
   background-color: rgba(0, 0, 0, 0.05);
 }
 
+.open {
+  animation: fade-in 0.25s ease-in-out forwards;
+}
+
+.close {
+  animation: fade-out 0.25s ease-in-out forwards;
+}
+
 @keyframes fade-in {
   from {
     opacity: 0;
   }
   to {
     opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
   }
 }

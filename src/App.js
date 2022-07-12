@@ -11,12 +11,9 @@ const AllQuotes = React.lazy(() => import("./pages/AllQuotes"));
 const Auth = React.lazy(() => import("./pages/Auth"));
 
 // 검색 기능?
-// 댓글 에니메이션
-// 로그인 네비게이션
 // 프롬프트 자동 삭제
 // 댓글 수 업데이트
 // 좋아요 계정 제한
-// 댓글 좋아요 / 싫어요 / 작성 시간 - 정렬
 
 const App = () => {
   return (

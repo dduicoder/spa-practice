@@ -1,6 +1,6 @@
-import { Fragment, useEffect } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
-import { Route, Routes, useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import useHttp from "../hooks/use-http";
 import { getSingleQuote } from "../lib/api";
@@ -10,8 +10,9 @@ import LoadingSpinner from "../components/UI/LoadingSpinner";
 import Backdrop from "../components/UI/Backdrop";
 
 const QuoteDetail = () => {
+  const [showComment, setShowComment] = useState(false);
+
   const params = useParams();
-  const navigate = useNavigate();
 
   const { quoteId } = params;
 
@@ -44,23 +45,27 @@ const QuoteDetail = () => {
 
   return (
     <Fragment>
-      <HighlightedQuote quote={loadedQuote} />
-      <Routes>
-        <Route
-          path="/comments"
-          element={
-            <Fragment>
-              <Backdrop
-                show={true}
-                close={() => {
-                  navigate("");
-                }}
-              />
-              {createPortal(<Comments />, document.getElementById("overlays"))}
-            </Fragment>
-          }
-        />
-      </Routes>
+      <HighlightedQuote
+        quote={loadedQuote}
+        open={() => {
+          setShowComment(true);
+        }}
+      />
+      <Backdrop
+        show={showComment}
+        close={() => {
+          setShowComment(false);
+        }}
+      />
+      {createPortal(
+        <Comments
+          show={showComment}
+          close={() => {
+            setShowComment(false);
+          }}
+        />,
+        document.getElementById("overlays")
+      )}
     </Fragment>
   );
 };

@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import { CSSTransition } from "react-transition-group";
 
 import classes from "./Select.module.css";
 
@@ -17,7 +18,16 @@ const Select = (props) => {
       <button className="btn" onClick={() => setShowSelect(!showSelect)}>
         {props.text} {props.value}
       </button>
-      {showSelect && (
+      <CSSTransition
+        mountOnEnter
+        unmountOnExit
+        in={showSelect}
+        timeout={{ enter: 250, exit: 250 }}
+        classNames={{
+          enterActive: classes.open,
+          exitActive: classes.close,
+        }}
+      >
         <ul>
           {props.list.map((value) => (
             <li
@@ -31,7 +41,7 @@ const Select = (props) => {
             </li>
           ))}
         </ul>
-      )}
+      </CSSTransition>
     </div>
   );
 };

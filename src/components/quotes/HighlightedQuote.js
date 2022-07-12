@@ -1,7 +1,7 @@
 import { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import useHttp from "../../hooks/use-http";
-import { addView, setLike } from "../../lib/api";
+import { addQuoteView, setQuoteLike } from "../../lib/api";
 import AuthContext from "../../store/auth-context";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -14,7 +14,7 @@ import Prompt from "../UI/Prompt";
 import classes from "./HighlightedQuote.module.css";
 
 const HighlightedQuote = (props) => {
-  const quote = props.quote;
+  const { quote } = props;
 
   const [click, setClick] = useState(false);
   const [likes, setLikes] = useState(quote.like);
@@ -22,8 +22,8 @@ const HighlightedQuote = (props) => {
 
   const authCtx = useContext(AuthContext);
 
-  const { sendRequest: sendView } = useHttp(addView);
-  const { sendRequest: sendLike } = useHttp(setLike);
+  const { sendRequest: sendView } = useHttp(addQuoteView);
+  const { sendRequest: sendLike } = useHttp(setQuoteLike);
 
   useEffect(() => {
     sendView({ quoteId: quote.id, view: quote.view });
@@ -80,9 +80,9 @@ const HighlightedQuote = (props) => {
           {quote.view + 1} <FontAwesomeIcon icon={faEye} />
         </span>
       </div>
-      <Link className="btn" to="comments?page=1">
+      <button className="btn" onClick={props.open}>
         Comments
-      </Link>
+      </button>
     </section>
   );
 };

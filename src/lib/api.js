@@ -110,7 +110,7 @@ export async function getAllComments(quoteId) {
   return transformedComments;
 }
 
-export async function addView(requestData) {
+export async function addQuoteView(requestData) {
   const response = await fetch(
     `${FIREBASE_DOMAIN}/quotes/${requestData.quoteId}/view.json`,
     {
@@ -130,7 +130,7 @@ export async function addView(requestData) {
   return null;
 }
 
-export async function setLike(requestData) {
+export async function setQuoteLike(requestData) {
   const response = await fetch(
     `${FIREBASE_DOMAIN}/quotes/${requestData.quoteId}/like.json`,
     {
@@ -145,6 +145,46 @@ export async function setLike(requestData) {
 
   if (!response.ok) {
     throw new Error(data.message || "Could not set like.");
+  }
+
+  return null;
+}
+
+export async function setCommentLike(requestData) {
+  const response = await fetch(
+    `${FIREBASE_DOMAIN}/comments/${requestData.quoteId}/${requestData.commentId}/like.json`,
+    {
+      method: "PUT",
+      body: JSON.stringify(requestData.like),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(data.message || "Could not like comment.");
+  }
+
+  return null;
+}
+
+export async function setCommentDislike(requestData) {
+  const response = await fetch(
+    `${FIREBASE_DOMAIN}/comments/${requestData.quoteId}/${requestData.commentId}/dislike.json`,
+    {
+      method: "PUT",
+      body: JSON.stringify(requestData.dislike),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(data.message || "Could not dislike comment.");
   }
 
   return null;

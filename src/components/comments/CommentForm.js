@@ -29,7 +29,7 @@ const CommentForm = (props) => {
     }
 
     sendRequest({
-      commentData: { text },
+      commentData: { text, like: 0, dislike: 0 },
       quoteId: props.quoteId,
       comments: props.comments,
     });

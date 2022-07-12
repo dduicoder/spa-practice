@@ -10,17 +10,27 @@
 }
 
 .control textarea {
+  resize: none;
   font: inherit;
   padding: 0.5rem;
   border-radius: 0.5rem;
   margin: 1rem 0;
   border: 1px solid #dedede;
-  width: min(100%, 30rem);
+  width: min(100%, 35rem);
   transition: all 0.25s ease-in-out;
 }
 
 .control textarea:focus {
   border-color: #9b9b9b;
+}
+
+.control textarea::-webkit-scrollbar {
+  width: 5px;
+}
+
+.control textarea::-webkit-scrollbar-thumb {
+  background-color: #8f8f8f;
+  border-radius: 1rem;
 }
 
 .invalid {
