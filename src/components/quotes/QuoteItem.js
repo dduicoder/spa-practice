@@ -14,8 +14,8 @@ const QuoteItem = (props) => {
     <li className={`card ${classes.item}`}>
       <figure>
         <blockquote>
-          {quote.text.length > 150
-            ? quote.text.substr(0, 150) + "..."
+          {quote.text.length > 125
+            ? quote.text.substr(0, 125) + "..."
             : quote.text}
         </blockquote>
         <figcaption>{quote.author}</figcaption>

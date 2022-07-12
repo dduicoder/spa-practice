@@ -73,7 +73,7 @@ const CommentItem = (props) => {
           setShowPrompt(false);
         }}
       >
-        Please log in to like a comment <Link to="../auth">Log in</Link>
+        Please log in to rate a comment <Link to="../auth">Log in</Link>
       </Prompt>
       {showMore ? comment.text.substr(0, 150) + "..." : comment.text}
       {comment.text.length > 150 && (

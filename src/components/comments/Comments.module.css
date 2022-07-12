@@ -4,7 +4,7 @@
   top: 10vh;
   left: 50%;
   transform: translateX(-50%);
-  width: min(90%, 40rem);
+  width: min(100%, 40rem);
   border-radius: 2rem;
   max-height: 80vh;
   z-index: 5;
@@ -73,5 +73,18 @@
   to {
     opacity: 0;
     top: 5vh;
+  }
+}
+
+@media (max-width: 600px) {
+  .control {
+    height: 2rem;
+  }
+  .control h2 {
+    font-size: 1rem;
+  }
+  .control div,
+  .control div button {
+    font-size: 0.75rem;
   }
 }

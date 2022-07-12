@@ -31,6 +31,7 @@ const Select = (props) => {
         <ul>
           {props.list.map((value) => (
             <li
+              className={value === props.value ? classes.current : ""}
               key={value}
               onClick={() => {
                 props.setValue(value);

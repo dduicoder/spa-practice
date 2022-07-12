@@ -4,20 +4,22 @@
 
 .select ul {
   background-color: white;
-  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
   width: 100%;
+  margin: 0;
   padding: 0;
   position: absolute;
   left: 0;
+  top: 3.5rem;
   list-style: none;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
   border-radius: 0.5rem;
 }
 
 .select ul li {
+  border-radius: 0.5rem;
   padding: 0.5rem;
   cursor: pointer;
   transition: all 0.25s ease-in-out;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .select ul li:last-child {
@@ -25,7 +27,15 @@
 }
 
 .select ul li:hover {
+  background-color: rgba(0, 0, 0, 0.025);
+}
+
+.current {
   background-color: rgba(0, 0, 0, 0.05);
+}
+
+.current:hover {
+  background-color: rgba(0, 0, 0, 0.075) !important;
 }
 
 .open {
