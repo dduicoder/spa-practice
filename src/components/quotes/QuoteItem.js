@@ -25,7 +25,7 @@ const QuoteItem = (props) => {
           <FontAwesomeIcon icon={faComment} /> {quote.comments}
         </span>
       </figure>
-      <Link className="btn" to={`/quotes/${quote.id}`}>
+      <Link className="btn" to={`../quotes/${quote.id}`}>
         View
       </Link>
     </li>

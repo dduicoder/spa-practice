@@ -22,22 +22,6 @@
   border-radius: 1rem;
 }
 
-.form input,
-.form textarea {
-  font: inherit;
-  padding: 0.5rem;
-  border-radius: 0.5rem;
-  border: 1px solid #dedede;
-  display: block;
-  width: 100%;
-  transition: all 0.25s ease-in-out;
-}
-
-.form input:focus,
-.form textarea:focus {
-  border-color: #9b9b9b;
-}
-
 .invalid {
   border-color: #ff8383 !important;
   background-color: #fff3f3;

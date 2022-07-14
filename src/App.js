@@ -9,8 +9,8 @@ const QuoteDetail = React.lazy(() => import("./pages/QuoteDetail"));
 const NotFound = React.lazy(() => import("./pages/NotFound"));
 const AllQuotes = React.lazy(() => import("./pages/AllQuotes"));
 const Auth = React.lazy(() => import("./pages/Auth"));
+const Search = React.lazy(() => import("./pages/Search"));
 
-// 검색 기능?
 // 프롬프트 자동 삭제
 // 댓글 수 업데이트
 // 좋아요 계정 제한
@@ -31,6 +31,7 @@ const App = () => {
           <Route path="/quotes/:quoteId/*" element={<QuoteDetail />} />
           <Route path="/new-quote" element={<NewQuote />} />
           <Route path="/auth" element={<Auth />} />
+          <Route path="/search" element={<Search />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>

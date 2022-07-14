@@ -4,6 +4,9 @@ import { CSSTransition } from "react-transition-group";
 import { getAllComments } from "../../lib/api";
 import AuthContext from "../../store/auth-context";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSort } from "@fortawesome/free-solid-svg-icons";
+
 import NewCommentForm from "./CommentForm";
 import LoadingSpinner from "../UI/LoadingSpinner";
 import Prompt from "../UI/Prompt";
@@ -91,13 +94,14 @@ const Comments = (props) => {
             value={sort}
             setValue={(newSort) => setSort(newSort)}
             list={sorts}
-            text="Sort"
+            text={<FontAwesomeIcon icon={faSort} />}
           />
           <h2 className={classes.title}>
             Comments ({loadedComments ? loadedComments.length : 0})
           </h2>
           <h2 onClick={props.close}>X</h2>
         </div>
+
         {comments}
         {isAddingComment ? (
           <NewCommentForm

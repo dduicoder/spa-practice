@@ -55,6 +55,12 @@ const MainHeader = () => {
       />
       <nav>
         <NavLink
+          to="search"
+          className={({ isActive }) => (isActive ? classes.active : "")}
+        >
+          Search
+        </NavLink>
+        <NavLink
           to="quotes"
           className={({ isActive }) => (isActive ? classes.active : "")}
         >
