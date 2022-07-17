@@ -1,5 +1,4 @@
-import { Fragment, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { Fragment, useState } from "react";
 
 import QuoteItem from "./QuoteItem";
 import Pagination from "../UI/Pagination";
@@ -7,21 +6,9 @@ import Select from "../UI/Select";
 import classes from "./QuoteList.module.css";
 
 const QuoteList = (props) => {
-  const navigate = useNavigate();
-  const location = useLocation();
-
-  useEffect(() => {
-    if (location.search === "") {
-      navigate({
-        pathname: location.pathname,
-        search: "page=1&limit=10&sort=view",
-      });
-    }
-  }, [location, navigate]);
-
-  const sort = new URLSearchParams(location.search).get("sort");
-  const page = Number(new URLSearchParams(location.search).get("page"));
-  const limit = Number(new URLSearchParams(location.search).get("limit"));
+  const [sort, setSort] = useState("view");
+  const [page, setPage] = useState(1);
+  const [limit, setLimit] = useState(10);
 
   let sortedQuotes;
   const offset = (page - 1) * limit;
@@ -45,31 +32,6 @@ const QuoteList = (props) => {
       return quoteA.like < quoteB.like ? 1 : -1;
     });
   } else {
-    return <p className="centered">Wrong Page</p>;
-  }
-
-  const setPage = (newPage) => {
-    navigate({
-      pathname: location.pathname,
-      search: `page=${newPage}&limit=${limit}&sort=${sort}`,
-    });
-  };
-
-  const setSort = (newSort) => {
-    navigate({
-      pathname: location.pathname,
-      search: `page=${page}&limit=${limit}&sort=${newSort}`,
-    });
-  };
-
-  const setLimit = (newLimit) => {
-    navigate({
-      pathname: location.pathname,
-      search: `page=${page}&limit=${newLimit}&sort=${sort}`,
-    });
-  };
-
-  if (props.quotes.length < offset || page === 0 || limit === 0) {
     return <p className="centered">Wrong Page</p>;
   }
 

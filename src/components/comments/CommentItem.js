@@ -35,13 +35,14 @@ const CommentItem = (props) => {
       return;
     }
 
+    let newLike = comment.like;
+
     if (!like) {
-      sendLike({ quoteId, commentId: comment.id, like: comment.like + 1 });
-      setLikes(comment.like + 1);
-    } else {
-      sendLike({ quoteId, commentId: comment.id, like: comment.like });
-      setLikes(comment.like);
+      newLike += 1;
     }
+
+    sendLike({ quoteId, commentId: comment.id, like: newLike });
+    setLikes(newLike);
     setLike(!like);
   };
 
@@ -51,17 +52,14 @@ const CommentItem = (props) => {
       return;
     }
 
+    let newDislike = comment.dislike;
+
     if (!dislike) {
-      sendDislike({
-        quoteId,
-        commentId: comment.id,
-        dislike: comment.dislike + 1,
-      });
-      setDislikes(comment.dislike + 1);
-    } else {
-      sendDislike({ quoteId, commentId: comment.id, dislike: comment.dislike });
-      setDislikes(comment.dislike);
+      newDislike += 1;
     }
+
+    sendDislike({ quoteId, commentId: comment.id, dislike: newDislike });
+    setDislikes(newDislike);
     setDislike(!dislike);
   };
 
@@ -82,16 +80,14 @@ const CommentItem = (props) => {
         </button>
       )}
       <div className={classes.control}>
-        {likes}
-        <FontAwesomeIcon
-          onClick={likeHandler}
-          icon={like ? faThumbsUp : emptyLike}
-        />
-        {dislikes}
-        <FontAwesomeIcon
-          onClick={dislikeHandler}
-          icon={dislike ? faThumbsDown : emptyDisLike}
-        />
+        <div onClick={likeHandler}>
+          {likes}
+          <FontAwesomeIcon icon={like ? faThumbsUp : emptyLike} />
+        </div>
+        <div onClick={dislikeHandler}>
+          {dislikes}
+          <FontAwesomeIcon icon={dislike ? faThumbsDown : emptyDisLike} />
+        </div>
       </div>
     </li>
   );

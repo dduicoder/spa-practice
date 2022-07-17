@@ -101,7 +101,6 @@ const Comments = (props) => {
           </h2>
           <h2 onClick={props.close}>X</h2>
         </div>
-
         {comments}
         {isAddingComment ? (
           <NewCommentForm

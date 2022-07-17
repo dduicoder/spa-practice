@@ -11,55 +11,58 @@
   transition: 0.25s;
 }
 
-.header h1 {
+.logo {
   font-size: 1.5rem;
+  font-weight: bold;
   color: white;
+  text-decoration: none;
 }
 
-.header nav {
+.nav {
   display: flex;
   gap: 1rem;
 }
 
-.header a,
-.btn {
-  text-decoration: none;
+.nav a,
+.nav button {
   padding: 5px 0;
-  color: #cdcdcd;
   transition: all 0.25s ease-in-out;
+  color: #cdcdcd;
   border-bottom: 1px solid #434343;
   cursor: pointer;
 }
 
-.btn {
+.nav button {
   background: transparent;
   border: none;
-  transition: all 0.25s ease-in-out;
   border-bottom: 1px solid #434343;
   font-size: 1rem;
-  padding: 5px 0;
 }
 
-.btn:hover,
-.btn:active,
-.header a:hover,
-.header a:active,
-.header a.active {
+.nav button:hover,
+.nav button:active,
+.nav a:hover,
+.nav a:active,
+.nav a.active {
   color: white;
   border-color: white;
 }
 
-.hamberger {
+.side {
   display: none;
   cursor: pointer;
   color: white;
 }
 
+.side a {
+  margin-right: 1rem;
+}
+
 @media (max-width: 600px) {
-  .hamberger {
+  .side {
     display: block;
   }
-  .header nav {
+  .nav {
     display: none;
   }
 }

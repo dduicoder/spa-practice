@@ -1,10 +1,11 @@
 import { useState, useContext, Fragment } from "react";
 import { createPortal } from "react-dom";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import AuthContext from "../../store/auth-context";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 import SideNavigation from "./SideNavigation";
 import Backdrop from "../UI/Backdrop";
@@ -45,15 +46,21 @@ const MainHeader = () => {
         </Fragment>,
         document.getElementById("overlays")
       )}
-      <h1>Quotes</h1>
-      <FontAwesomeIcon
-        icon={faBars}
-        className={classes.hamberger}
-        onClick={() => {
-          setShowSide(true);
-        }}
-      />
-      <nav>
+      <Link to="quotes" className={classes.logo}>
+        Quotes
+      </Link>
+      <nav className={classes.side}>
+        <Link to="search">
+          <FontAwesomeIcon icon={faMagnifyingGlass} />
+        </Link>
+        <FontAwesomeIcon
+          icon={faBars}
+          onClick={() => {
+            setShowSide(true);
+          }}
+        />
+      </nav>
+      <nav className={classes.nav}>
         <NavLink
           to="search"
           className={({ isActive }) => (isActive ? classes.active : "")}
@@ -74,7 +81,6 @@ const MainHeader = () => {
         </NavLink>
         {authCtx.loggedIn ? (
           <button
-            className={classes.btn}
             onClick={() => {
               authCtx.logout();
             }}

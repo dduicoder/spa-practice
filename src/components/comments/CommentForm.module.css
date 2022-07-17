@@ -11,11 +11,7 @@
 
 .control textarea {
   width: min(100%, 35rem);
-  margin: 1rem 0;
-}
-
-.control textarea:focus {
-  border-color: #9b9b9b;
+  margin: 1rem auto;
 }
 
 .control textarea::-webkit-scrollbar {

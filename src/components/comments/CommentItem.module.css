@@ -21,11 +21,14 @@
 
 .control {
   display: flex;
-  gap: 0.5rem;
   justify-content: flex-end;
-  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
 }
 
-.control svg {
+.control div {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   cursor: pointer;
 }

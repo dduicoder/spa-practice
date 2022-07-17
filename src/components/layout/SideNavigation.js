@@ -4,9 +4,8 @@ import { CSSTransition } from "react-transition-group";
 import AuthContext from "../../store/auth-context";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
-import { faPen } from "@fortawesome/free-solid-svg-icons";
 import { faQuoteRight } from "@fortawesome/free-solid-svg-icons";
+import { faPen } from "@fortawesome/free-solid-svg-icons";
 import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 import { faArrowRightToBracket } from "@fortawesome/free-solid-svg-icons";
 
@@ -30,14 +29,6 @@ const SideNavigation = (props) => {
     >
       <nav className={classes.nav}>
         <p>Navigate</p>
-        <NavLink
-          to="search"
-          className={({ isActive }) => (isActive ? classes.active : "")}
-          onClick={close}
-        >
-          Search
-          <FontAwesomeIcon icon={faMagnifyingGlass} />
-        </NavLink>
         <NavLink
           to="quotes"
           className={({ isActive }) => (isActive ? classes.active : "")}
