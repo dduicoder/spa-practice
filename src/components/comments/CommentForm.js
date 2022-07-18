@@ -6,7 +6,8 @@ import classes from "./CommentForm.module.css";
 
 const CommentForm = (props) => {
   const [textValid, setTextValid] = useState(true);
-  const commentTextRef = useRef();
+
+  const commentInputRef = useRef();
 
   const { sendRequest, status, error } = useHttp(addComment);
 
@@ -21,7 +22,7 @@ const CommentForm = (props) => {
   const submitFormHandler = (event) => {
     event.preventDefault();
 
-    const text = commentTextRef.current.value;
+    const text = commentInputRef.current.value;
 
     if (text.trim().length === 0) {
       setTextValid(false);
@@ -34,7 +35,7 @@ const CommentForm = (props) => {
       comments: props.comments,
     });
 
-    commentTextRef.current.value = "";
+    commentInputRef.current.value = "";
   };
 
   const textBlurHandler = (event) => {
@@ -50,7 +51,7 @@ const CommentForm = (props) => {
         <textarea
           id="comment"
           rows="5"
-          ref={commentTextRef}
+          ref={commentInputRef}
           className={textValid ? "" : classes.invalid}
           onBlur={textBlurHandler}
         ></textarea>

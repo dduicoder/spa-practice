@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { createPortal } from "react-dom";
 import { NavLink } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
 import AuthContext from "../../store/auth-context";
@@ -16,7 +17,7 @@ const SideNavigation = (props) => {
 
   const { close } = props;
 
-  return (
+  return createPortal(
     <CSSTransition
       mountOnEnter
       unmountOnExit
@@ -66,7 +67,8 @@ const SideNavigation = (props) => {
           </NavLink>
         )}
       </nav>
-    </CSSTransition>
+    </CSSTransition>,
+    document.getElementById("overlays")
   );
 };
 

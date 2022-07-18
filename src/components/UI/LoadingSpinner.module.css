@@ -1,19 +1,10 @@
 .spinner {
-  display: inline-block;
   width: 5rem;
   height: 5rem;
-}
-
-.spinner:after {
-  content: " ";
-  display: block;
-  width: 4rem;
-  height: 4rem;
-  margin: 0.5rem;
   border-radius: 50%;
   border: 5px solid #343434;
   border-color: #343434 transparent #343434 transparent;
-  animation: spinner 1.25s linear infinite;
+  animation: spinner 1.25s ease-in-out infinite;
 }
 
 @keyframes spinner {

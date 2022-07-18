@@ -16,10 +16,11 @@ import useHttp from "../../hooks/use-http";
 import classes from "./Comments.module.css";
 
 const Comments = (props) => {
+  const params = useParams();
+
   const [isAddingComment, setIsAddingComment] = useState(false);
   const [showPrompt, setShowPrompt] = useState(false);
   const [sort, setSort] = useState("like");
-  const params = useParams();
 
   const AuthCtx = useContext(AuthContext);
 

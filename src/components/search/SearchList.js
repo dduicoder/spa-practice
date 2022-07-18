@@ -49,7 +49,7 @@ const SearchList = (props) => {
   if (sortedQuotes.length === 0) {
     sortedQuotes = [
       <p key="p" style={{ textAlign: "center", marginTop: "1rem" }}>
-        No Result
+        - No Result -
       </p>,
     ];
   } else {

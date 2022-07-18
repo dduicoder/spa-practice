@@ -1,8 +1,8 @@
 .item {
   width: min(100%, 35rem);
   margin: 1rem auto;
-  padding-bottom: 0.5rem;
-  padding-top: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.1rem;
   border-bottom: 1px solid rgba(0, 0, 0, 0.25);
   transition: all 0.25s ease-in-out;
 }
@@ -26,7 +26,7 @@
   font-size: 0.9rem;
 }
 
-.control div {
+.control span {
   display: flex;
   align-items: center;
   gap: 0.5rem;

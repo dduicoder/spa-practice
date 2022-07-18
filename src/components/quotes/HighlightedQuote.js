@@ -6,8 +6,8 @@ import AuthContext from "../../store/auth-context";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClipboard } from "@fortawesome/free-regular-svg-icons";
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
-import { faHeart as regHeart } from "@fortawesome/free-regular-svg-icons";
+import { faThumbsUp } from "@fortawesome/free-solid-svg-icons";
+import { faThumbsUp as emptyLike } from "@fortawesome/free-regular-svg-icons";
 import { faEye } from "@fortawesome/free-regular-svg-icons";
 
 import Prompt from "../UI/Prompt";
@@ -16,7 +16,7 @@ import classes from "./HighlightedQuote.module.css";
 const HighlightedQuote = (props) => {
   const { quote } = props;
 
-  const [click, setClick] = useState(false);
+  const [like, setLike] = useState(false);
   const [likes, setLikes] = useState(quote.like);
   const [showPrompt, setShowPrompt] = useState(false);
 
@@ -35,14 +35,11 @@ const HighlightedQuote = (props) => {
       return;
     }
 
-    if (!click) {
-      sendLike({ quoteId: quote.id, like: quote.like + 1 });
-      setLikes(quote.like + 1);
-    } else {
-      sendLike({ quoteId: quote.id, like: quote.like });
-      setLikes(quote.like);
-    }
-    setClick(!click);
+    const newLike = like ? quote.like : quote.like + 1;
+
+    sendLike({ quoteId: quote.id, like: newLike });
+    setLikes(newLike);
+    setLike(!like);
   };
 
   return (
@@ -70,10 +67,10 @@ const HighlightedQuote = (props) => {
         />
         <span onClick={likeHandler}>
           {likes}{" "}
-          {click ? (
-            <FontAwesomeIcon icon={faHeart} />
+          {like ? (
+            <FontAwesomeIcon icon={faThumbsUp} />
           ) : (
-            <FontAwesomeIcon icon={regHeart} />
+            <FontAwesomeIcon icon={emptyLike} />
           )}
         </span>
         <span>

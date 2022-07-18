@@ -10,8 +10,9 @@ const QuoteList = (props) => {
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(10);
 
-  let sortedQuotes;
   const offset = (page - 1) * limit;
+
+  let sortedQuotes;
 
   if (sort === "new") {
     sortedQuotes = props.quotes.sort((quoteA, quoteB) => {
@@ -31,8 +32,6 @@ const QuoteList = (props) => {
       }
       return quoteA.like < quoteB.like ? 1 : -1;
     });
-  } else {
-    return <p className="centered">Wrong Page</p>;
   }
 
   const limits = [5, 10, 25, 50];

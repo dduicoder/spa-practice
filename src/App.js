@@ -12,7 +12,6 @@ const Auth = React.lazy(() => import("./pages/Auth"));
 const Search = React.lazy(() => import("./pages/Search"));
 
 // 프롬프트 자동 삭제
-// 댓글 수 업데이트
 // 댓글 좋아요 업데이트
 // 좋아요 계정 제한
 

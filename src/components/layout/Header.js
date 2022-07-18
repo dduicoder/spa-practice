@@ -1,5 +1,4 @@
-import { useState, useContext, Fragment } from "react";
-import { createPortal } from "react-dom";
+import { useState, useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import AuthContext from "../../store/auth-context";
 
@@ -35,17 +34,12 @@ const MainHeader = () => {
           setShowSide(false);
         }}
       />
-      {createPortal(
-        <Fragment>
-          <SideNavigation
-            show={showSide}
-            close={() => {
-              setShowSide(false);
-            }}
-          />
-        </Fragment>,
-        document.getElementById("overlays")
-      )}
+      <SideNavigation
+        show={showSide}
+        close={() => {
+          setShowSide(false);
+        }}
+      />
       <Link to="quotes" className={classes.logo}>
         Quotes
       </Link>

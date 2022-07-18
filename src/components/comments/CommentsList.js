@@ -7,22 +7,25 @@ import classes from "./CommentsList.module.css";
 const CommentsList = (props) => {
   const [page, setPage] = useState(1);
 
+  const { comments } = props;
+  const { sort } = props;
+
   const limit = 10;
 
   const offset = (page - 1) * limit;
 
   let sortedComments;
 
-  if (props.sort === "new") {
-    sortedComments = props.comments.sort((commentA, commentB) => {
+  if (sort === "new") {
+    sortedComments = comments.sort((commentA, commentB) => {
       return commentA.id < commentB.id ? 1 : -1;
     });
-  } else if (props.sort === "old") {
-    sortedComments = props.comments.sort((commentA, commentB) => {
+  } else if (sort === "old") {
+    sortedComments = comments.sort((commentA, commentB) => {
       return commentA.id > commentB.id ? 1 : -1;
     });
-  } else if (props.sort === "like") {
-    sortedComments = props.comments.sort((commentA, commentB) => {
+  } else if (sort === "like") {
+    sortedComments = comments.sort((commentA, commentB) => {
       if (commentA.like === commentB.like) {
         return commentA.id < commentB.id ? 1 : -1;
       }
@@ -42,7 +45,7 @@ const CommentsList = (props) => {
         ))}
       </ul>
       <Pagination
-        total={props.comments.length}
+        total={comments.length}
         limit={limit}
         page={page}
         setPage={(newPage) => {
