@@ -3,20 +3,20 @@ import CSSTransition from "react-transition-group/CSSTransition";
 
 import classes from "./Prompt.module.css";
 
-const Prompt = (props) => {
+const Prompt = ({ show, close, children }) => {
   return createPortal(
     <CSSTransition
       mountOnEnter
       unmountOnExit
-      in={props.show}
+      in={show}
       timeout={{ enter: 250, exit: 250 }}
       classNames={{
         enterActive: classes.open,
         exitActive: classes.close,
       }}
     >
-      <div className={classes.prompt} onClick={props.close}>
-        {props.children}
+      <div className={classes.prompt} onClick={close}>
+        {children}
       </div>
     </CSSTransition>,
     document.getElementById("overlays")

@@ -9,7 +9,7 @@ import Pagination from "../UI/Pagination";
 
 import classes from "./SearchList.module.css";
 
-const SearchList = (props) => {
+const SearchList = ({ quotes }) => {
   const [search, setSearch] = useState("");
   const [searchOption, setSearchOption] = useState("text");
   const [page, setPage] = useState(1);
@@ -23,7 +23,7 @@ const SearchList = (props) => {
   let sortedQuotes;
 
   if (searchOption === "text") {
-    sortedQuotes = props.quotes.filter((quote) => {
+    sortedQuotes = quotes.filter((quote) => {
       if (search === "") {
         return quote;
       } else if (quote.text.toLowerCase().includes(search.toLowerCase())) {
@@ -32,7 +32,7 @@ const SearchList = (props) => {
       return null;
     });
   } else if (searchOption === "author") {
-    sortedQuotes = props.quotes.filter((quote) => {
+    sortedQuotes = quotes.filter((quote) => {
       if (search === "") {
         return quote;
       } else if (quote.author.toLowerCase().includes(search.toLowerCase())) {
@@ -41,17 +41,15 @@ const SearchList = (props) => {
       return null;
     });
   } else {
-    sortedQuotes = props.quotes;
+    sortedQuotes = quotes;
   }
 
   const total = sortedQuotes.length;
 
   if (sortedQuotes.length === 0) {
-    sortedQuotes = [
-      <p key="p" style={{ textAlign: "center", marginTop: "1rem" }}>
-        - No Result -
-      </p>,
-    ];
+    sortedQuotes = (
+      <p style={{ textAlign: "center", marginTop: "1rem" }}>- No Result -</p>
+    );
   } else {
     sortedQuotes = sortedQuotes
       .slice(offset, offset + limit)

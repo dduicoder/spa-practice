@@ -13,10 +13,7 @@ import { faThumbsUp as emptyLike } from "@fortawesome/free-regular-svg-icons";
 import Prompt from "../UI/Prompt";
 import classes from "./CommentItem.module.css";
 
-const CommentItem = (props) => {
-  const { comment } = props;
-  const { quoteId } = props;
-
+const CommentItem = ({ comment, quoteId }) => {
   const [like, setLike] = useState(false);
   const [dislike, setDislike] = useState(false);
   const [likes, setLikes] = useState(comment.like);

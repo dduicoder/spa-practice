@@ -2,8 +2,8 @@
   width: 5rem;
   height: 5rem;
   border-radius: 50%;
-  border: 5px solid #343434;
-  border-color: #343434 transparent #343434 transparent;
+  border: 5px solid #434343;
+  border-color: #434343 transparent #434343 transparent;
   animation: spinner 1.25s ease-in-out infinite;
 }
 

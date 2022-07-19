@@ -7,9 +7,7 @@ import { faComment } from "@fortawesome/free-regular-svg-icons";
 
 import classes from "./QuoteItem.module.css";
 
-const QuoteItem = (props) => {
-  const quote = props.quote;
-
+const QuoteItem = ({ quote }) => {
   return (
     <li className={`card ${classes.item}`}>
       <figure>

@@ -3,7 +3,7 @@ import { CSSTransition } from "react-transition-group";
 
 import classes from "./Select.module.css";
 
-const Select = (props) => {
+const Select = ({ value, setValue, list, text }) => {
   const [showSelect, setShowSelect] = useState(false);
   const wrapperRef = useRef();
 
@@ -16,7 +16,7 @@ const Select = (props) => {
   return (
     <div ref={wrapperRef} className={classes.select}>
       <button className="btn" onClick={() => setShowSelect(!showSelect)}>
-        {props.text} {props.value}
+        {text} {value}
       </button>
       <CSSTransition
         mountOnEnter
@@ -29,16 +29,16 @@ const Select = (props) => {
         }}
       >
         <ul>
-          {props.list.map((value) => (
+          {list.map((val) => (
             <li
-              className={value === props.value ? classes.current : ""}
-              key={value}
+              className={val === value ? classes.current : ""}
+              key={val}
               onClick={() => {
-                props.setValue(value);
+                setValue(val);
                 setShowSelect(false);
               }}
             >
-              {value}
+              {val}
             </li>
           ))}
         </ul>

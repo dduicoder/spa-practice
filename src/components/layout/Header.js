@@ -3,14 +3,14 @@ import { Link, NavLink } from "react-router-dom";
 import AuthContext from "../../store/auth-context";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 
 import SideNavigation from "./SideNavigation";
 import Backdrop from "../UI/Backdrop";
 import classes from "./Header.module.css";
 
-const MainHeader = () => {
+const Header = () => {
   const [show, setShow] = useState(true);
   const [lastScroll, setLastScroll] = useState(0);
   const [showSide, setShowSide] = useState(false);
@@ -18,16 +18,12 @@ const MainHeader = () => {
   const authCtx = useContext(AuthContext);
 
   window.onscroll = () => {
-    if (document.documentElement.scrollTop > lastScroll) {
-      setShow(false);
-    } else {
-      setShow(true);
-    }
+    setShow(document.documentElement.scrollTop < lastScroll);
     setLastScroll(document.documentElement.scrollTop);
   };
 
   return (
-    <header className={classes.header} style={{ top: show ? "0" : "-4rem" }}>
+    <header className={classes.header} style={{ top: show ? "0" : "-3rem" }}>
       <Backdrop
         show={showSide}
         close={() => {
@@ -94,4 +90,4 @@ const MainHeader = () => {
   );
 };
 
-export default MainHeader;
+export default Header;

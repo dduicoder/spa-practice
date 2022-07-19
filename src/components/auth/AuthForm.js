@@ -2,11 +2,7 @@ import { useRef, useState } from "react";
 
 import classes from "./AuthForm.module.css";
 
-const AuthForm = (props) => {
-  const { login } = props;
-  const { setLogin } = props;
-  const { isLoading } = props;
-
+const AuthForm = ({ onSubmit, login, setLogin, isLoading }) => {
   const [emailValid, setEmailValid] = useState(true);
   const [passwordValid, setPasswordValid] = useState(true);
 
@@ -26,7 +22,7 @@ const AuthForm = (props) => {
       return;
     }
 
-    props.onSubmit(email, password);
+    onSubmit(email, password);
   };
 
   const emailBlurHandler = (event) => {

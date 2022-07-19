@@ -4,11 +4,8 @@ import CommentItem from "./CommentItem";
 import Pagination from "../UI/Pagination";
 import classes from "./CommentsList.module.css";
 
-const CommentsList = (props) => {
+const CommentsList = ({ comments, quoteId, sort }) => {
   const [page, setPage] = useState(1);
-
-  const { comments } = props;
-  const { sort } = props;
 
   const limit = 10;
 
@@ -37,11 +34,7 @@ const CommentsList = (props) => {
     <Fragment>
       <ul className={classes.comments}>
         {sortedComments.slice(offset, offset + limit).map((comment) => (
-          <CommentItem
-            key={comment.id}
-            comment={comment}
-            quoteId={props.quoteId}
-          />
+          <CommentItem key={comment.id} comment={comment} quoteId={quoteId} />
         ))}
       </ul>
       <Pagination

@@ -13,9 +13,7 @@ import { faEye } from "@fortawesome/free-regular-svg-icons";
 import Prompt from "../UI/Prompt";
 import classes from "./HighlightedQuote.module.css";
 
-const HighlightedQuote = (props) => {
-  const { quote } = props;
-
+const HighlightedQuote = ({ quote, open }) => {
   const [like, setLike] = useState(false);
   const [likes, setLikes] = useState(quote.like);
   const [showPrompt, setShowPrompt] = useState(false);
@@ -77,7 +75,7 @@ const HighlightedQuote = (props) => {
           {quote.view + 1} <FontAwesomeIcon icon={faEye} />
         </span>
       </div>
-      <button className="btn" onClick={props.open}>
+      <button className="btn" onClick={open}>
         Comments
       </button>
     </section>

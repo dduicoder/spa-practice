@@ -7,7 +7,7 @@ import AuthContext from "../../store/auth-context";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSort } from "@fortawesome/free-solid-svg-icons";
 
-import NewCommentForm from "./CommentForm";
+import CommentForm from "./CommentForm";
 import LoadingSpinner from "../UI/LoadingSpinner";
 import Prompt from "../UI/Prompt";
 import Select from "../UI/Select";
@@ -15,10 +15,10 @@ import CommentsList from "./CommentsList";
 import useHttp from "../../hooks/use-http";
 import classes from "./Comments.module.css";
 
-const Comments = (props) => {
+const Comments = ({ show, close }) => {
   const params = useParams();
 
-  const [isAddingComment, setIsAddingComment] = useState(false);
+  const [addingComment, setAddingComment] = useState(false);
   const [showPrompt, setShowPrompt] = useState(false);
   const [sort, setSort] = useState("like");
 
@@ -34,7 +34,7 @@ const Comments = (props) => {
 
   const addCommentHandler = useCallback(() => {
     sendRequest(quoteId);
-    setIsAddingComment(false);
+    setAddingComment(false);
   }, [sendRequest, quoteId]);
 
   const setCommentFormHandler = () => {
@@ -42,7 +42,7 @@ const Comments = (props) => {
       setShowPrompt(true);
       return;
     }
-    setIsAddingComment(true);
+    setAddingComment(true);
   };
 
   let comments;
@@ -74,7 +74,7 @@ const Comments = (props) => {
     <CSSTransition
       mountOnEnter
       unmountOnExit
-      in={props.show}
+      in={show}
       timeout={{ enter: 250, exit: 250 }}
       classNames={{
         enterActive: classes.open,
@@ -100,13 +100,13 @@ const Comments = (props) => {
           <h2 className={classes.title}>
             Comments ({loadedComments ? loadedComments.length : 0})
           </h2>
-          <h2 onClick={props.close}>X</h2>
+          <h2 onClick={close}>X</h2>
         </div>
         {comments}
-        {isAddingComment ? (
-          <NewCommentForm
+        {addingComment ? (
+          <CommentForm
+            onAddComment={addCommentHandler}
             quoteId={quoteId}
-            onAddedComment={addCommentHandler}
             comments={loadedComments ? loadedComments.length : 0}
           />
         ) : (

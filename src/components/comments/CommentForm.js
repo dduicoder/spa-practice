@@ -4,20 +4,18 @@ import { addComment } from "../../lib/api";
 
 import classes from "./CommentForm.module.css";
 
-const CommentForm = (props) => {
+const CommentForm = ({ onAddComment, quoteId, comments }) => {
   const [textValid, setTextValid] = useState(true);
 
   const commentInputRef = useRef();
 
   const { sendRequest, status, error } = useHttp(addComment);
 
-  const { onAddedComment } = props;
-
   useEffect(() => {
     if (status === "completed" && !error) {
-      onAddedComment();
+      onAddComment();
     }
-  }, [status, error, onAddedComment]);
+  }, [status, error, onAddComment]);
 
   const submitFormHandler = (event) => {
     event.preventDefault();
@@ -31,11 +29,9 @@ const CommentForm = (props) => {
 
     sendRequest({
       commentData: { text, like: 0, dislike: 0 },
-      quoteId: props.quoteId,
-      comments: props.comments,
+      quoteId,
+      comments,
     });
-
-    commentInputRef.current.value = "";
   };
 
   const textBlurHandler = (event) => {

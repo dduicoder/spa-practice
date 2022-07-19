@@ -13,10 +13,24 @@
   gap: 0.5rem;
 }
 
-.nav p {
-  padding-bottom: 1rem;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
-  margin: 0;
+.control {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  height: 2.5rem;
+}
+
+.control span {
+  position: absolute;
+  font-weight: bold;
+}
+
+.control :first-child {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.control :last-child {
+  right: 1rem;
+  cursor: pointer;
 }
 
 .nav a,

@@ -12,16 +12,14 @@ import { faArrowRightToBracket } from "@fortawesome/free-solid-svg-icons";
 
 import classes from "./SideNavigation.module.css";
 
-const SideNavigation = (props) => {
+const SideNavigation = ({ close, show }) => {
   const authCtx = useContext(AuthContext);
-
-  const { close } = props;
 
   return createPortal(
     <CSSTransition
       mountOnEnter
       unmountOnExit
-      in={props.show}
+      in={show}
       timeout={{ enter: 250, exit: 250 }}
       classNames={{
         enterActive: classes.open,
@@ -29,7 +27,10 @@ const SideNavigation = (props) => {
       }}
     >
       <nav className={classes.nav}>
-        <p>Navigate</p>
+        <div className={classes.control}>
+          <span>Navigate</span>
+          <span onClick={close}>X</span>
+        </div>
         <NavLink
           to="quotes"
           className={({ isActive }) => (isActive ? classes.active : "")}

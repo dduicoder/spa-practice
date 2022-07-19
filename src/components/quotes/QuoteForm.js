@@ -5,7 +5,7 @@ import AuthContext from "../../store/auth-context";
 import Prompt from "../UI/Prompt";
 import classes from "./QuoteForm.module.css";
 
-const QuoteForm = (props) => {
+const QuoteForm = ({ onAddQuote }) => {
   const [authorValid, setAuthorValid] = useState(true);
   const [textValid, setTextValid] = useState(true);
   const [showPrompt, setShowPrompt] = useState(false);
@@ -33,7 +33,7 @@ const QuoteForm = (props) => {
       return;
     }
 
-    props.onAddQuote({
+    onAddQuote({
       author: enteredAuthor,
       text: enteredText,
       like: 0,
