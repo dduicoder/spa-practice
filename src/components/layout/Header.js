@@ -23,7 +23,7 @@ const Header = () => {
   };
 
   return (
-    <header className={classes.header} style={{ top: show ? "0" : "-3rem" }}>
+    <header className={classes.header} style={{ top: show ? "0" : "-4rem" }}>
       <Backdrop
         show={showSide}
         close={() => {
